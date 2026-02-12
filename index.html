@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Betül Böçkün Beauty | Güzellik Salonu</title>
+    <meta
+      name="description"
+      content="Betül Böçkün Beauty, Beylikdüzü'nde hijyenik bakım, protez tırnak, manikür & pedikür ve ipek kirpik hizmetleri sunan güzellik salonu." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #faeef2;
+        --ink: #2a1720;
+        --muted: #6f4d5b;
+        --accent: #c79a4a;
+        --accent-2: #f1c87a;
+        --rose: #f7dbe3;
+        --rose-2: #ffeef4;
+        --plum: #4a2733;
+        --shadow: 0 20px 60px rgba(64, 29, 43, 0.2);
+        --shadow-soft: 0 16px 40px rgba(64, 29, 43, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Manrope", system-ui, -apple-system, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(900px 600px at 20% -10%, #ffe6ee 0%, transparent 60%),
+          radial-gradient(800px 600px at 100% 10%, #fff1f6 0%, transparent 55%),
+          var(--bg);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        overflow-x: hidden;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(250, 238, 242, 0.96);
+        border-bottom: 1px solid rgba(199, 154, 74, 0.15);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 26px rgba(199, 154, 74, 0.12);
+      }
+
+      .nav-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+
+      .brand-logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, #f7e6ee, #fef6f9);
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+      }
+
+      .brand-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .brand span {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 24px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      .nav-links a:hover {
+        color: var(--plum);
+      }
+
+      .nav-call {
+        font-weight: 600;
+        color: var(--plum);
+        background: white;
+        border: 1px solid rgba(199, 154, 74, 0.3);
+        padding: 8px 14px;
+        border-radius: 999px;
+        white-space: nowrap;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 64px 24px 88px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 28px;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 35% 8% auto 8%;
+        height: 320px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(199, 154, 74, 0.18), transparent 70%);
+        filter: blur(30px);
+        z-index: 0;
+      }
+
+      .hero-copy {
+        grid-column: span 6;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: white;
+        color: var(--plum);
+        font-weight: 600;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .hero h1 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(36px, 4.6vw, 60px);
+        margin: 18px 0 16px;
+        line-height: 1.05;
+      }
+
+      .hero p {
+        font-size: 17px;
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .cta.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #2b1b20;
+        box-shadow: 0 18px 40px rgba(199, 154, 74, 0.35);
+      }
+
+      .cta.ghost {
+        border-color: rgba(199, 154, 74, 0.35);
+        color: var(--plum);
+        background: white;
+      }
+
+      .cta:hover {
+        transform: translateY(-2px);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        background: white;
+        padding: 14px 16px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-soft);
+        display: grid;
+        gap: 4px;
+      }
+
+      .stat strong {
+        font-size: 18px;
+      }
+
+      .hero-media {
+        grid-column: span 6;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-card {
+        border-radius: 28px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card img {
+        width: 100%;
+        height: 520px;
+        object-fit: cover;
+      }
+
+      .hero-card .overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.45) 100%);
+      }
+
+      .hero-card .tag {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        font-weight: 600;
+      }
+
+      .section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 76px 24px;
+      }
+
+      .section h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(28px, 3vw, 42px);
+        margin-bottom: 12px;
+      }
+
+      .section p.lead {
+        color: var(--muted);
+        margin-bottom: 32px;
+      }
+
+      .services {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: var(--shadow-soft);
+        display: grid;
+        gap: 10px;
+      }
+
+      .service-card span {
+        font-weight: 600;
+        color: var(--plum);
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 16px;
+        grid-auto-rows: 80px;
+      }
+
+      .mini-gallery {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+        grid-auto-rows: 60px;
+        margin-top: 8px;
+      }
+
+      .gallery-item {
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        position: relative;
+      }
+
+      .mini-gallery .gallery-item {
+        border-radius: 20px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .w-5 { grid-column: span 5; }
+      .w-6 { grid-column: span 6; }
+      .w-7 { grid-column: span 7; }
+      .h-2 { grid-row: span 2; }
+      .h-3 { grid-row: span 3; }
+      .h-4 { grid-row: span 4; }
+      .h-5 { grid-row: span 5; }
+
+      .about {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+        align-items: center;
+      }
+
+      .about-card {
+        background: white;
+        border-radius: 24px;
+        padding: 24px;
+        box-shadow: var(--shadow-soft);
+        display: grid;
+        gap: 12px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        background: rgba(199, 154, 74, 0.15);
+        color: var(--plum);
+      }
+
+      .reviews {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 18px;
+      }
+
+      .review {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: var(--shadow-soft);
+        display: grid;
+        gap: 12px;
+      }
+
+      .review strong {
+        font-size: 15px;
+      }
+
+      .review p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .visit {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        align-items: center;
+      }
+
+      .visit-card {
+        background: white;
+        border-radius: 24px;
+        padding: 22px;
+        box-shadow: var(--shadow-soft);
+        display: grid;
+        gap: 16px;
+      }
+
+      .info-row {
+        display: grid;
+        gap: 6px;
+      }
+
+      .info-row span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .map-preview {
+        border-radius: 26px;
+        overflow: hidden;
+        background: linear-gradient(130deg, #f7e6ee, #fff);
+        padding: 30px;
+        min-height: 320px;
+        display: grid;
+        gap: 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .map-preview h3 {
+        margin: 0;
+      }
+
+      .map-preview .cta-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .map-embed {
+        padding-top: 40px;
+      }
+
+      .map-frame {
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background: white;
+      }
+
+      .map-frame iframe {
+        width: 100%;
+        height: 420px;
+        border: 0;
+        display: block;
+      }
+
+      footer {
+        padding: 40px 24px 60px;
+        text-align: center;
+        color: var(--muted);
+      }
+
+      .sticky-bar {
+        position: fixed;
+        bottom: calc(16px + env(safe-area-inset-bottom));
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(520px, calc(100% - 24px));
+        background: white;
+        border-radius: 999px;
+        box-shadow: 0 20px 50px rgba(48, 20, 32, 0.25);
+        display: none;
+        justify-content: space-between;
+        padding: 10px;
+        z-index: 30;
+      }
+
+      .sticky-bar a {
+        flex: 1;
+        text-align: center;
+        padding: 10px 12px;
+        border-radius: 999px;
+        font-weight: 600;
+        color: var(--plum);
+      }
+
+      .sticky-bar a.primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #2b1b20;
+      }
+
+      @media (max-width: 980px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-copy,
+        .hero-media {
+          grid-column: span 1;
+        }
+
+        .hero-card img {
+          height: 420px;
+        }
+
+        .hero-media {
+          order: -1;
+        }
+
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 160px;
+        }
+
+        .gallery-item {
+          grid-column: span 1 !important;
+          grid-row: span 1 !important;
+        }
+
+        .mini-gallery {
+          grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 140px;
+        }
+
+        .mini-gallery .gallery-item {
+          grid-column: span 1 !important;
+          grid-row: span 1 !important;
+        }
+
+        .sticky-bar {
+          display: flex;
+        }
+
+        footer {
+          padding-bottom: 140px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .nav-inner {
+          padding: 12px 16px;
+        }
+
+        .brand span {
+          font-size: 20px;
+        }
+
+        .nav-call {
+          font-size: 12px;
+          padding: 6px 10px;
+        }
+
+        .hero {
+          padding: 36px 18px 64px;
+          gap: 20px;
+        }
+
+        .hero-eyebrow {
+          font-size: 12px;
+        }
+
+        .hero h1 {
+          font-size: 30px;
+        }
+
+        .hero p {
+          font-size: 15px;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+        }
+
+        .hero-actions .cta {
+          width: 100%;
+          font-size: 15px;
+        }
+
+        .hero-actions {
+          display: none;
+        }
+
+        .hero-card img {
+          height: 320px;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .stat:nth-child(3) {
+          grid-column: span 2;
+        }
+
+        .section {
+          padding: 60px 18px;
+        }
+
+        .services {
+          grid-template-columns: 1fr;
+        }
+
+        .section h2 {
+          font-size: 26px;
+        }
+
+        .map-preview {
+          padding: 22px;
+          min-height: 0;
+        }
+
+        .map-frame iframe {
+          height: 300px;
+        }
+
+        .map-preview .cta-group {
+          display: none;
+        }
+
+        .sticky-bar {
+          width: calc(100% - 20px);
+          padding: 8px;
+        }
+
+        .sticky-bar a {
+          font-size: 14px;
+          padding: 10px 8px;
+        }
+
+      }
+
+      @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0); }
+      }
+
+      .float {
+        animation: float 5s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <nav class="nav">
+        <div class="nav-inner">
+          <div class="brand">
+            <div class="brand-logo">
+              <img src="betul-bockun-logo.png" alt="Betül Böçkün Beauty logosu" />
+            </div>
+            <span>Betül Böçkün Beauty</span>
+          </div>
+          <div class="nav-links">
+            <a href="#overview">Genel Bakış</a>
+            <a href="#services">Hizmetler</a>
+            <a href="#gallery">Galeri</a>
+            <a href="#reviews">Yorumlar</a>
+            <a href="#visit">İletişim</a>
+          </div>
+          <a class="nav-call" href="tel:+905521548052">Ara: 0552 154 80 52</a>
+        </div>
+      </nav>
+
+      <section class="hero" id="overview">
+        <div class="hero-copy">
+          <div class="hero-eyebrow">Güzellik Salonu · Beylikdüzü</div>
+          <h1>Bakımlı hissetmenin en zarif hali.</h1>
+          <p>
+            Betül Böçkün Beauty, hijyenik ortamı ve özenli uygulamalarıyla kendinizi her ziyaretinizde özel hissettiren
+            bir bakım deneyimi sunar. Protez tırnak, manikür & pedikür ve ipek kirpik hizmetlerinde titizlikle çalışıyoruz.
+          </p>
+          <div class="hero-actions">
+            <a class="cta primary" href="tel:+905521548052">Hemen Ara</a>
+            <a class="cta ghost" href="https://www.google.com/maps/search/?api=1&query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Yol Tarifi Al</a>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <strong>4.1 ★</strong>
+              <span>40 yorum</span>
+            </div>
+            <div class="stat">
+              <strong>Açık</strong>
+              <span>Kapanış: 20:00</span>
+            </div>
+            <div class="stat">
+              <strong>Erçev Sitesi</strong>
+              <span>Cumhuriyet, Eğitim Vadisi Blv. No:3</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-media">
+          <div class="hero-card float">
+            <img src="nails-red-hearts.png" alt="Kalpli nail art uygulaması" />
+            <div class="overlay"></div>
+            <div class="tag">Nail art & protez tırnak</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="services">
+        <h2>Hizmetler</h2>
+        <p class="lead">Her detayda özen, her uygulamada hijyen. Size en uygun bakımı birlikte seçiyoruz.</p>
+        <div class="services">
+          <div class="service-card">
+            <span>Protez Tırnak</span>
+            <p>Dayanıklı, doğal görünümlü ve kişiye özel tasarım.</p>
+          </div>
+          <div class="service-card">
+            <span>Manikür & Pedikür</span>
+            <p>Hijyenik bakım, rahatlatıcı dokunuşlar.</p>
+          </div>
+          <div class="service-card">
+            <span>İpek Kirpik</span>
+            <p>Doğal hacim, net bakışlar ve uzun süre kalıcılık.</p>
+          </div>
+          <div class="service-card">
+            <span>Kaş & Bıyık</span>
+            <p>Yüz şeklinize uygun tasarım ve hassas uygulama.</p>
+          </div>
+          <div class="service-card">
+            <span>Kalıcı Oje</span>
+            <p>Parlaklık ve dayanıklılığı uzun süre korur.</p>
+          </div>
+          <div class="service-card">
+            <span>Bakım Ritüelleri</span>
+            <p>Cilt, el ve ayak bakımıyla tam yenilenme.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <h2>Galeri</h2>
+        <p class="lead">Salon atmosferi ve özenle hazırlanmış uygulamalardan kareler.</p>
+        <div class="gallery-grid">
+          <div class="gallery-item w-7 h-5">
+            <img src="https://images.pexels.com/photos/3736520/pexels-photo-3736520.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-3736520.jpg&fm=jpg" alt="Modern güzellik salonu iç mekanı" />
+          </div>
+          <div class="gallery-item w-5 h-5">
+            <img src="https://images.pexels.com/photos/4677852/pexels-photo-4677852.jpeg?cs=srgb&dl=pexels-leeloothefirst-4677852.jpg&fm=jpg" alt="Manikür sırasında yakın plan bakım" />
+          </div>
+          <div class="gallery-item w-6 h-4">
+            <img src="https://images.pexels.com/photos/8481628/pexels-photo-8481628.jpeg?cs=srgb&dl=pexels-19x14-8481628.jpg&fm=jpg" alt="Tırnak şekillendirme ve bakım" />
+          </div>
+          <div class="gallery-item w-6 h-4">
+            <img src="https://images.pexels.com/photos/6135684/pexels-photo-6135684.jpeg?cs=srgb&dl=pexels-gabrielpuyen-6135684.jpg&fm=jpg" alt="Salon ortamında manikür uygulaması" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="about">
+          <div class="about-card">
+            <span class="pill">Hijyen & Özen</span>
+            <h3>Şeffaf, güvenli ve sakin bir bakım alanı.</h3>
+            <p>
+              Tüm ekipmanlar düzenli olarak steril edilir, her uygulama öncesi alan titizlikle hazırlanır. Amacımız sadece
+              güzel görünmeniz değil, aynı zamanda kendinizi iyi hissetmeniz.
+            </p>
+          </div>
+          <div class="about-card">
+            <span class="pill">Nazik Dokunuş</span>
+            <h3>Her uygulama size özel planlanır.</h3>
+            <p>
+              İster sade ve zarif tırnaklar, ister iddialı nail art… Size en uygun seçimi birlikte yapıyor, sonucu özenle
+              tamamlıyoruz.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="reviews">
+        <h2>Misafir Yorumları</h2>
+        <p class="lead">Salonumuzdan memnun ayrılan misafirlerimizin yorumlarından öne çıkanlar.</p>
+        <div class="reviews">
+          <div class="review">
+            <strong>“%100 tavsiye edebilirim, gönül rahatlığıyla gidilebilir.”</strong>
+            <p>Merve Hanım güler yüzlü ve özverili. İşini ehliyle yapıyor, teşekkür ediyorum. — Sema Koyuncu</p>
+          </div>
+          <div class="review">
+            <strong>“Protez tırnak ve ipek kirpik yaptırdım, çok memnun kaldım.”</strong>
+            <p>İşlemi Mahinur Hanım yaptı ve çok güzel oldu. Ellerinize sağlık. — Nurgozel Rozyyeva</p>
+          </div>
+          <div class="review">
+            <strong>“Salon hem kaliteli hem hijyenik.”</strong>
+            <p>Merve Hanım çok pozitif, işinde de çok başarılı. Kendimden çok memnunum. — Gizem Türkmen</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="visit">
+        <h2>Bizi Ziyaret Edin</h2>
+        <p class="lead">Cumhuriyet, Eğitim Vadisi Blv. No:3, 34520 Beylikdüzü/İstanbul</p>
+        <div class="visit">
+          <div class="visit-card">
+            <div class="info-row">
+              <strong>Adres</strong>
+              <span>Cumhuriyet, Eğitim Vadisi Blv. No:3, 34520 Beylikdüzü/İstanbul</span>
+            </div>
+            <div class="info-row">
+              <strong>Konum</strong>
+              <span>Erçev Sitesi · Plus Code: XJRX+Q5</span>
+            </div>
+            <div class="info-row">
+              <strong>Telefon</strong>
+              <span>0552 154 80 52</span>
+            </div>
+            <div class="info-row">
+              <strong>Saatler</strong>
+              <span>Açık · Kapanış 20:00</span>
+            </div>
+          </div>
+          <div class="map-preview">
+            <h3>Hızlıca ulaşın</h3>
+            <p>Randevu ve bilgi için arayın veya haritada konumumuzu görüntüleyin.</p>
+            <div class="cta-group">
+              <a class="cta primary" href="https://www.google.com/maps/search/?api=1&query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Haritada Aç</a>
+              <a class="cta ghost" href="tel:+905521548052">Hemen Ara</a>
+            </div>
+            <div class="mini-gallery">
+              <div class="gallery-item w-6 h-4">
+                <img src="salon-interior-wall.png" alt="Salon içi atmosfer" />
+              </div>
+              <div class="gallery-item w-6 h-4">
+                <img src="nails-milky-white.png" alt="Süt beyaz tırnak" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section map-embed" id="map">
+        <h2>Harita</h2>
+        <p class="lead">Konumumuzu haritada görüntüleyin.</p>
+        <div class="map-frame">
+          <iframe
+            title="Betül Böçkün Beauty harita"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Cumhuriyet%20E%C4%9Fitim%20Vadisi%20Blv%20No%3A3%20Beylikd%C3%BCz%C3%BC&output=embed">
+          </iframe>
+        </div>
+      </section>
+
+      <footer>
+        <p>Betül Böçkün Beauty · Beylikdüzü/İstanbul</p>
+        <p>Bakımlı hissetmek için doğru adres.</p>
+      </footer>
+
+      <div class="sticky-bar">
+        <a href="tel:+905521548052">Ara</a>
+        <a class="primary" href="https://www.google.com/maps/search/?api=1&query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Yol Tarifi</a>
+        <a href="#reviews">Yorumlar</a>
+      </div>
+    </div>
+  </body>
+</html>
