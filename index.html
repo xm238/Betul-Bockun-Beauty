@@ -416,6 +416,7 @@
         display: grid;
         grid-template-columns: 1.05fr 1fr;
         gap: 18px;
+        align-items: start;
       }
 
       .booking-info,
@@ -735,6 +736,15 @@
         border: 0;
         display: block;
         background: #fff;
+      }
+
+      .instagram-open {
+        display: block;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--plum);
+        padding: 10px 8px 12px;
       }
 
       .news-grid {
@@ -1780,7 +1790,7 @@
             light: { "cal-brand": "#c79a4a" },
             dark: { "cal-brand": "#f2d7a2" }
           },
-          hideEventTypeDetails: false,
+          hideEventTypeDetails: true,
           layout: "month_view"
         });
 
@@ -1873,8 +1883,11 @@
           if (!isConfiguredUrl(url)) return "";
           try {
             const parsed = new URL(url);
-            const cleanPath = parsed.pathname.replace(/\/+$/, "");
-            return `https://www.instagram.com${cleanPath}/embed`;
+            const match = parsed.pathname.match(/\/(p|reel)\/([^/]+)/);
+            if (!match) return "";
+            const type = match[1];
+            const id = match[2];
+            return `https://www.instagram.com/${type}/${id}/embed`;
           } catch (_error) {
             return "";
           }
@@ -1893,6 +1906,7 @@
               referrerpolicy="strict-origin-when-cross-origin"
               src="${embedUrl}">
             </iframe>
+            <a class="instagram-open" href="${url}" target="_blank" rel="noreferrer">Instagram'da Aç</a>
           `;
           fallback.appendChild(card);
         });
