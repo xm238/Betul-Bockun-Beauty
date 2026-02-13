@@ -1067,29 +1067,29 @@
         }
 
         .nav-inner {
-          width: calc(100% - 14px);
-          padding: 9px 10px;
+          width: calc(100% - 10px);
+          padding: 10px 12px;
           border-radius: 26px;
         }
 
         .brand-logo {
-          width: 44px;
-          height: 44px;
+          width: 48px;
+          height: 48px;
           border-radius: 14px;
         }
 
         .brand-name {
-          font-size: 17px;
-          max-width: 104px;
-          line-height: 1.1;
+          font-size: clamp(21px, 7vw, 26px);
+          max-width: 220px;
+          line-height: 0.98;
         }
 
         .header-controls {
-          gap: 6px;
+          gap: 4px;
         }
 
         .lang-btn {
-          padding: 6px 7px;
+          padding: 6px 6px;
           font-size: 11px;
         }
 
@@ -1100,7 +1100,7 @@
 
         .hero {
           padding: 28px 16px 42px;
-          grid-template-columns: minmax(0, 1fr) minmax(118px, 34%);
+          grid-template-columns: minmax(0, 1fr) minmax(170px, 52%);
           gap: 12px;
         }
 
@@ -1124,8 +1124,8 @@
 
         .hero-trust li {
           padding: 10px 11px;
-          font-size: 13px;
-          max-width: 230px;
+          font-size: 12px;
+          max-width: 220px;
         }
 
         .hero-media {
@@ -1133,6 +1133,9 @@
           grid-row: 2;
           align-self: start;
           order: 2;
+          width: 100%;
+          max-width: none;
+          justify-self: end;
         }
 
         .hero-card {
@@ -1146,7 +1149,7 @@
         }
 
         .hero-card img {
-          aspect-ratio: 3 / 4;
+          aspect-ratio: 4 / 5;
           height: auto;
         }
 
@@ -1201,7 +1204,7 @@
         }
       }
 
-      @media (max-width: 380px) {
+      @media (max-width: 340px) {
         .hero {
           grid-template-columns: 1fr;
         }
@@ -1216,7 +1219,9 @@
         }
 
         .brand-name {
-          display: none;
+          font-size: 18px;
+          max-width: 132px;
+          line-height: 1;
         }
 
         .lang-btn {
