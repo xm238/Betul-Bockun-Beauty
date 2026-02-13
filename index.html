@@ -293,20 +293,7 @@
       .nav-actions {
         display: flex;
         align-items: center;
-        gap: 10px;
-      }
-
-      .nav-phone {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 14px;
-        border-radius: 999px;
-        border: 1px solid var(--border);
-        background: #fff;
-        font-weight: 700;
-        font-size: 14px;
-        box-shadow: var(--shadow-sm);
-        white-space: nowrap;
+        gap: 0;
       }
 
       .nav-toggle {
@@ -456,6 +443,15 @@
         border-radius: var(--radius-md);
         background: #fff;
         overflow: auto;
+        position: relative;
+      }
+
+      .cal-inline-fallback {
+        width: 100%;
+        min-height: 760px;
+        border: 0;
+        border-radius: var(--radius-md);
+        background: #fff;
       }
 
       .helper {
@@ -730,14 +726,15 @@
         box-shadow: var(--shadow-sm);
         border: 1px solid rgba(199, 154, 74, 0.2);
         background: #fff;
-        padding: 8px;
+        padding: 0;
       }
 
-      .instagram-post .instagram-media {
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
+      .instagram-post iframe {
+        width: 100%;
+        min-height: 480px;
+        border: 0;
+        display: block;
+        background: #fff;
       }
 
       .news-grid {
@@ -939,7 +936,6 @@
           gap: 8px;
         }
 
-        .nav-phone,
         .nav-actions .cta {
           width: 100%;
           justify-content: center;
@@ -1037,6 +1033,14 @@
         .cal-inline-host {
           min-height: 620px;
         }
+
+        .cal-inline-fallback {
+          min-height: 600px;
+        }
+
+        .instagram-post iframe {
+          min-height: 440px;
+        }
       }
     </style>
 
@@ -1097,19 +1101,14 @@
 
           <div class="nav-panel" id="mainMenu">
             <div class="nav-links">
-              <a href="#overview">Genel Bakış</a>
               <a href="#booking">Randevu</a>
               <a href="#services">Hizmetler</a>
               <a href="#gallery">Galeri</a>
               <a href="#reviews">Yorumlar</a>
-              <a href="#faq">SSS</a>
               <a href="#contact">İletişim</a>
             </div>
 
             <div class="nav-actions">
-              <a class="nav-phone" href="tel:+905521548052" aria-label="Betül Böçkün Beauty telefonla ara">
-                Ara: 0552 154 80 52
-              </a>
               <a class="cta primary small" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">
                 Randevu Al
               </a>
@@ -1165,36 +1164,36 @@
         </section>
 
         <section class="section" id="booking">
-          <span class="eyebrow reveal">Adım 1 · Randevu Sistemi</span>
-          <h2 class="reveal">Online Randevu (Cal.com)</h2>
+          <span class="eyebrow reveal">Kolay Randevu</span>
+          <h2 class="reveal">Randevunuzu Online Oluşturun</h2>
           <p class="lead reveal">
-            Demo için ücretsiz Cal.com planıyla randevu oluşturma akışını entegre ettim.
-            Takvim görünümü ve butonlar tek yerden güncellenebilir.
+            Uygun gün ve saati seçerek dakikalar içinde randevunuzu oluşturabilirsiniz.
+            Dilerseniz telefonla da hızlıca randevu alabilirsiniz.
           </p>
 
           <div class="booking-grid">
             <article class="panel booking-info reveal">
-              <span class="badge">Ücretsiz araçla kurulum</span>
-              <h3>Randevu akışı</h3>
+              <span class="badge">Hızlı ve Pratik</span>
+              <h3>2 dakikada randevu</h3>
               <p class="lead" style="margin-bottom: 0">
-                Müşteri hizmetini seçer, uygun saati görür ve randevusunu tamamlar. Sonrasında
-                otomatik e-posta/SMS bildirimleri Cal.com içinden yönetilebilir.
+                Size uygun hizmeti seçin, saatinizi belirleyin ve onay mesajınızı alın.
+                Böylece beklemeden planınızı netleştirebilirsiniz.
               </p>
 
               <ol class="booking-steps">
-                <li>Hizmet süresi ve takvim uygunlukları Cal.com panelinden ayarlanır.</li>
-                <li>Bu sayfadaki tüm "Randevu Al" butonları tek linkten otomatik güncellenir.</li>
-                <li>Telefon araması ve yol tarifi seçenekleri her zaman alternatif olarak kalır.</li>
+                <li>Uygun gün ve saatleri takvimden seçin.</li>
+                <li>Ad-soyad ve iletişim bilgilerinizi girin.</li>
+                <li>Randevu onayınızı anında görüntüleyin.</li>
               </ol>
 
               <div class="hero-actions" style="margin-top: 18px">
-                <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Cal.com'da Randevu Aç</a>
+                <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Randevu Oluştur</a>
                 <a class="cta ghost" href="tel:+905521548052">Telefonla Randevu</a>
               </div>
             </article>
 
             <article class="panel booking-embed reveal">
-              <h3 style="margin-top: 0">Takvim önizleme</h3>
+              <h3 style="margin-top: 0">Randevu Takvimi</h3>
               <div
                 id="my-cal-inline-betul-bockun"
                 class="cal-inline-host"
@@ -1202,7 +1201,7 @@
                 aria-label="Cal.com randevu takvim önizlemesi">
               </div>
               <p class="helper">
-                Takvim görünmüyorsa
+                Takvim açılmazsa
                 <a data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer"><strong>yeni sekmede açın</strong></a>.
               </p>
             </article>
@@ -1210,11 +1209,10 @@
         </section>
 
         <section class="section" id="services">
-          <span class="eyebrow reveal">Adım 2 · Dinamik Hizmet/Fiyat</span>
+          <span class="eyebrow reveal">Popüler Hizmetler</span>
           <h2 class="reveal">Hizmetler ve Fiyat Aralığı</h2>
           <p class="lead reveal">
-            Fiyatları statik metin yerine düzenlenebilir bir veri yapısından oluşturuyoruz.
-            Yeni hizmet eklemek veya fiyat güncellemek için sadece tek bir listede değişiklik yeterli.
+            Size en uygun bakımı kolayca seçebilmeniz için hizmetlerimizi net ve sade şekilde listeledik.
           </p>
           <div class="chip-row reveal" id="serviceFilters" aria-label="Hizmet kategorileri"></div>
           <div class="services-grid" id="servicesGrid" aria-live="polite"></div>
@@ -1283,11 +1281,10 @@
         </section>
 
         <section class="section" id="reviews">
-          <span class="eyebrow reveal">Adım 3 · Yorum Yönetimi</span>
+          <span class="eyebrow reveal">Misafir Deneyimleri</span>
           <h2 class="reveal">Misafir Yorumları</h2>
           <p class="lead reveal">
-            Hazır yorum kartlarının yanında yeni yorum toplamak için form alanı ekledim. Google yorumu bağlantısı da
-            doğrudan aksiyona hazır.
+            Misafirlerimizin deneyimleri, hizmet kalitemizi en iyi anlatan referansımız.
           </p>
 
           <div class="reviews-toolbar reveal">
@@ -1302,7 +1299,6 @@
             </a>
             <a class="cta ghost small" href="#reviewForm">Siteden Yorum Gönder</a>
           </div>
-          <p class="helper reveal">Google yorum bağlantısı işletme hesabı erişimi geldikten sonra aktif edilecek.</p>
 
           <div class="reviews-grid">
             <article class="panel review-card reveal">
@@ -1325,7 +1321,7 @@
           </div>
 
           <article class="panel form-card reveal" id="reviewForm" style="margin-top: 16px">
-            <h3 style="margin-top: 0">Yeni yorum alımı (demo)</h3>
+            <h3 style="margin-top: 0">Deneyiminizi Paylaşın</h3>
             <form id="reviewIntakeForm" method="post">
               <input type="hidden" name="form_type" value="review" />
               <div class="form-grid">
@@ -1351,18 +1347,17 @@
                 <button class="cta primary" type="submit">Yorumu Gönder</button>
               </div>
               <p class="form-note" id="reviewFormNote">
-                Bu form ücretsiz Formspree endpoint'i bağlandığında çalışır.
+                Yorumunuz bize ulaştığında kontrol edilip yayınlanır.
               </p>
             </form>
           </article>
         </section>
 
         <section class="section" id="instagram">
-          <span class="eyebrow reveal">Adım 4 · Instagram Entegrasyonu</span>
-          <h2 class="reveal">Instagram Akışı</h2>
+          <span class="eyebrow reveal">Güncel Çalışmalar</span>
+          <h2 class="reveal">Instagram'da Son Paylaşımlarımız</h2>
           <p class="lead reveal">
-            Canlı akış için ücretsiz bir widget URL'si veya profil linki ekleyebiliriz. Şimdilik hızlı demo için görsel
-            önizleme ve profil yönlendirmesi aktif.
+            En yeni tırnak ve kirpik uygulamalarımızı burada görebilir, tüm paylaşımlar için profilimize geçebilirsiniz.
           </p>
 
           <article class="panel instagram-card reveal">
@@ -1382,13 +1377,13 @@
               </a>
             </div>
             <p class="helper" id="instagramHint">
-              Paylaşımlar doğrudan Instagram üzerinden gömülü olarak yükleniyor.
+              Daha fazla örnek için Instagram profilimizi ziyaret edin.
             </p>
           </article>
         </section>
 
         <section class="section" id="faq">
-          <span class="eyebrow reveal">Adım 5 · Sık Sorulan Sorular</span>
+          <span class="eyebrow reveal">Merak Ettikleriniz</span>
           <h2 class="reveal">Sık Sorulan Sorular</h2>
           <p class="lead reveal">Randevu öncesi ve sonrası en çok gelen soruların hızlı cevapları.</p>
 
@@ -1396,7 +1391,7 @@
             <details>
               <summary>Randevu iptal veya değişiklik nasıl yapılır?</summary>
               <p>
-                Cal.com üzerinden oluşturulan randevular e-posta onay linkinden değiştirilebilir veya iptal edilebilir.
+                Online sistem üzerinden oluşturulan randevular e-posta onay linkinden değiştirilebilir veya iptal edilebilir.
                 Telefonla oluşturulan randevular için bizi doğrudan arayabilirsiniz.
               </p>
             </details>
@@ -1428,10 +1423,10 @@
         </section>
 
         <section class="section" id="news">
-          <span class="eyebrow reveal">Adım 6 · Blog &amp; Duyuru</span>
+          <span class="eyebrow reveal">Bakım Önerileri</span>
           <h2 class="reveal">Blog ve Duyurular</h2>
           <p class="lead reveal">
-            SEO ve müşteri güveni için güncellenebilir mini içerik alanı. İstersen bunu gerçek blog altyapısına da taşıyabiliriz.
+            Güncel bakım önerileri ve salon duyurularını takip ederek kendinize en uygun planı kolayca oluşturabilirsiniz.
           </p>
 
           <div class="news-grid">
@@ -1465,7 +1460,7 @@
         </section>
 
         <section class="section" id="contact">
-          <span class="eyebrow reveal">Adım 7 · İletişim Formu</span>
+          <span class="eyebrow reveal">Bize Ulaşın</span>
           <h2 class="reveal">Bize Ulaşın</h2>
           <p class="lead reveal">
             Genel soru, fiyat talebi veya özel istekler için formu doldurun. Acil durumlar için telefon hattı her zaman
@@ -1549,7 +1544,7 @@
                   <button class="cta primary" type="submit">Mesajı Gönder</button>
                 </div>
                 <p class="form-note" id="contactFormNote">
-                  Bu form ücretsiz Formspree endpoint'i bağlandığında aktif olur.
+                  Mesajınız bize ulaştığında en kısa sürede dönüş yapılır.
                 </p>
               </form>
             </article>
@@ -1735,43 +1730,66 @@
         if (!calLink) return;
 
         const namespace = "betul-bockun";
-        const origin = "https://app.cal.com";
 
-        const startEmbed = () => {
-          if (typeof window.Cal !== "function") return;
-          window.Cal("init", namespace, { origin });
-          window.Cal.ns[namespace]("inline", {
-            elementOrSelector: "#my-cal-inline-betul-bockun",
-            config: { layout: "month_view", useSlotsViewOnSmallScreen: true },
-            calLink
-          });
-          window.Cal.ns[namespace]("ui", {
-            cssVarsPerTheme: {
-              light: { "cal-brand": "#c79a4a" },
-              dark: { "cal-brand": "#f2d7a2" }
-            },
-            hideEventTypeDetails: false,
-            layout: "month_view"
-          });
-        };
+        (function (C, A, L) {
+          const p = function (a, ar) {
+            a.q.push(ar);
+          };
+          const d = C.document;
+          C.Cal = C.Cal || function () {
+            const cal = C.Cal;
+            const ar = arguments;
+            if (!cal.loaded) {
+              cal.ns = {};
+              cal.q = cal.q || [];
+              d.head.appendChild(d.createElement("script")).src = A;
+              cal.loaded = true;
+            }
+            if (ar[0] === L) {
+              const api = function () {
+                p(api, arguments);
+              };
+              const ns = ar[1];
+              api.q = api.q || [];
+              if (typeof ns === "string") {
+                cal.ns[ns] = cal.ns[ns] || api;
+                p(cal.ns[ns], ar);
+                p(cal, ["initNamespace", ns]);
+              } else {
+                p(cal, ar);
+              }
+              return;
+            }
+            p(cal, ar);
+          };
+        })(window, "https://app.cal.com/embed/embed.js", "init");
 
-        if (window.Cal && typeof window.Cal === "function") {
-          startEmbed();
-          return;
-        }
+        window.Cal("init", namespace, { origin: "https://app.cal.com" });
+        window.Cal.ns[namespace]("inline", {
+          elementOrSelector: "#my-cal-inline-betul-bockun",
+          config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+          calLink
+        });
+        window.Cal.ns[namespace]("ui", {
+          cssVarsPerTheme: {
+            light: { "cal-brand": "#c79a4a" },
+            dark: { "cal-brand": "#f2d7a2" }
+          },
+          hideEventTypeDetails: false,
+          layout: "month_view"
+        });
 
-        const existing = document.querySelector('script[data-cal-embed="true"]');
-        if (existing) {
-          existing.addEventListener("load", startEmbed, { once: true });
-          return;
-        }
-
-        const script = document.createElement("script");
-        script.src = "https://app.cal.com/embed/embed.js";
-        script.async = true;
-        script.dataset.calEmbed = "true";
-        script.onload = startEmbed;
-        document.head.appendChild(script);
+        window.setTimeout(() => {
+          if (mount.querySelector("iframe")) return;
+          mount.innerHTML = `
+            <iframe
+              class="cal-inline-fallback"
+              title="Randevu takvimi"
+              loading="lazy"
+              src="https://app.cal.com/${calLink}?layout=month_view">
+            </iframe>
+          `;
+        }, 2800);
       }
 
       function renderServiceFilters(active = "all") {
@@ -1838,7 +1856,7 @@
             </iframe>
           `;
           if (hint) {
-            hint.textContent = "Canlı Instagram widget bağlantısı aktif.";
+            hint.textContent = "Instagram akışı aktif.";
           }
           return;
         }
@@ -1846,47 +1864,36 @@
         const fallback = document.getElementById("instagramFallback");
         if (!fallback) return;
 
+        const toEmbedUrl = (url) => {
+          if (!isConfiguredUrl(url)) return "";
+          try {
+            const parsed = new URL(url);
+            const cleanPath = parsed.pathname.replace(/\/+$/, "");
+            return `https://www.instagram.com${cleanPath}/embed`;
+          } catch (_error) {
+            return "";
+          }
+        };
+
         fallback.innerHTML = "";
         INSTAGRAM_POST_LINKS.forEach((url, index) => {
+          const embedUrl = toEmbedUrl(url);
+          if (!embedUrl) return;
           const card = document.createElement("article");
           card.className = "instagram-post";
           card.innerHTML = `
-            <blockquote
-              class="instagram-media"
-              data-instgrm-permalink="${url}"
-              data-instgrm-version="14"
-              data-instgrm-captioned="false"
-              aria-label="Instagram paylaşımı ${index + 1}">
-            </blockquote>
+            <iframe
+              title="Instagram paylaşımı ${index + 1}"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              src="${embedUrl}">
+            </iframe>
           `;
           fallback.appendChild(card);
         });
 
-        const processEmbeds = () => {
-          if (window.instgrm && window.instgrm.Embeds && typeof window.instgrm.Embeds.process === "function") {
-            window.instgrm.Embeds.process();
-          }
-        };
-
-        const existingScript = document.querySelector('script[data-instagram-embed="true"]');
-        if (existingScript) {
-          if (window.instgrm && window.instgrm.Embeds) {
-            processEmbeds();
-          } else {
-            existingScript.addEventListener("load", processEmbeds, { once: true });
-          }
-          return;
-        }
-
-        const script = document.createElement("script");
-        script.src = "https://www.instagram.com/embed.js";
-        script.async = true;
-        script.dataset.instagramEmbed = "true";
-        script.onload = processEmbeds;
-        document.head.appendChild(script);
-
         if (hint) {
-          hint.textContent = "Instagram gönderileri canlı embed olarak görüntüleniyor.";
+          hint.textContent = "Son paylaşımlarımızı doğrudan Instagram'dan görüntüleyebilirsiniz.";
         }
       }
 
@@ -1913,15 +1920,15 @@
 
         if (contactNote) {
           contactNote.textContent = hasFormEndpoint
-            ? "Form aktif. Mesajlar Formspree paneline düşer."
-            : "Form demo modunda. Formspree ID eklenmeden mesajlar gönderilmez.";
+            ? "Mesajınız bize ulaştığında en kısa sürede dönüş yapılır."
+            : "Form şu anda aktif değil. Lütfen telefonla bize ulaşın.";
           contactNote.classList.toggle("warn", !hasFormEndpoint);
         }
 
         if (reviewNote) {
           reviewNote.textContent = hasFormEndpoint
-            ? "Yorum formu aktif. Gönderimleri panelden onaylayabilirsiniz."
-            : "Yorum formu demo modunda. Formspree ID eklenmeden gönderim yapılmaz.";
+            ? "Yorumunuz bize ulaştığında kontrol edilip yayınlanır."
+            : "Yorum formu şu anda aktif değil.";
           reviewNote.classList.toggle("warn", !hasFormEndpoint);
         }
       }
