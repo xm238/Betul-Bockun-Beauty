@@ -271,6 +271,41 @@
         gap: 20px;
       }
 
+      .header-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+
+      .lang-switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border-radius: 999px;
+        padding: 4px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow-sm);
+        direction: ltr;
+      }
+
+      .lang-btn {
+        border: 0;
+        background: transparent;
+        color: var(--plum);
+        font-weight: 700;
+        font-size: 13px;
+        border-radius: 999px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+
+      .lang-btn.is-active {
+        background: #2d1b15;
+        color: #fff;
+      }
+
       .nav-links {
         display: flex;
         align-items: center;
@@ -299,11 +334,11 @@
       .nav-toggle {
         display: none;
         border: 1px solid var(--border);
-        border-radius: 12px;
+        border-radius: 999px;
         background: #fff;
         color: var(--plum);
         font-weight: 700;
-        padding: 9px 12px;
+        padding: 10px 16px;
       }
 
       .hero {
@@ -854,6 +889,19 @@
         color: #2b1b20;
       }
 
+      html[dir="rtl"] .booking-steps {
+        padding-left: 0;
+        padding-right: 18px;
+      }
+
+      html[dir="rtl"] .hero-copy,
+      html[dir="rtl"] .section,
+      html[dir="rtl"] .contact-item,
+      html[dir="rtl"] .review-card,
+      html[dir="rtl"] .service-card {
+        text-align: right;
+      }
+
       @keyframes heroFloat {
         0% {
           transform: translateY(0px);
@@ -911,6 +959,29 @@
       }
 
       @media (max-width: 900px) {
+        .brand {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .site-header {
+          border-bottom: 0;
+          background: transparent;
+          backdrop-filter: none;
+          box-shadow: none;
+          padding-top: 8px;
+        }
+
+        .nav-inner {
+          width: calc(100% - 20px);
+          margin: 0 auto;
+          padding: 10px 12px;
+          border-radius: 32px;
+          border: 1px solid rgba(199, 154, 74, 0.32);
+          background: rgba(255, 255, 255, 0.96);
+          box-shadow: 0 16px 30px rgba(71, 33, 47, 0.16);
+        }
+
         .nav-toggle {
           display: inline-flex;
           align-items: center;
@@ -918,7 +989,7 @@
 
         .nav-panel {
           position: fixed;
-          top: 78px;
+          top: 92px;
           left: 10px;
           right: 10px;
           border-radius: 18px;
@@ -988,7 +1059,9 @@
         }
 
         .nav-inner {
-          padding: 12px 16px;
+          width: calc(100% - 14px);
+          padding: 9px 10px;
+          border-radius: 26px;
         }
 
         .brand-logo {
@@ -998,7 +1071,23 @@
         }
 
         .brand-name {
-          font-size: 22px;
+          font-size: 17px;
+          max-width: 104px;
+          line-height: 1.1;
+        }
+
+        .header-controls {
+          gap: 6px;
+        }
+
+        .lang-btn {
+          padding: 6px 7px;
+          font-size: 11px;
+        }
+
+        .nav-toggle {
+          padding: 8px 10px;
+          font-size: 12px;
         }
 
         .hero {
@@ -1052,6 +1141,16 @@
           min-height: 440px;
         }
       }
+
+      @media (max-width: 380px) {
+        .brand-name {
+          display: none;
+        }
+
+        .lang-btn {
+          padding: 6px 6px;
+        }
+      }
     </style>
 
     <script type="application/ld+json">
@@ -1083,7 +1182,7 @@
   </head>
 
   <body>
-    <a class="skip-link" href="#main">İçeriğe geç</a>
+    <a class="skip-link" href="#main" data-i18n="skip_link">İçeriğe geç</a>
 
     <div class="page">
       <header class="site-header" id="top">
@@ -1100,29 +1199,37 @@
             <span class="brand-name">Betül Böçkün Beauty</span>
           </a>
 
-          <button
-            class="nav-toggle"
-            id="navToggle"
-            type="button"
-            aria-controls="mainMenu"
-            aria-expanded="false">
-            Menü
-          </button>
-
           <div class="nav-panel" id="mainMenu">
             <div class="nav-links">
-              <a href="#booking">Randevu</a>
-              <a href="#services">Hizmetler</a>
-              <a href="#gallery">Galeri</a>
-              <a href="#reviews">Yorumlar</a>
-              <a href="#contact">İletişim</a>
+              <a href="#booking" data-i18n="nav_booking">Randevu</a>
+              <a href="#services" data-i18n="nav_services">Hizmetler</a>
+              <a href="#gallery" data-i18n="nav_gallery">Galeri</a>
+              <a href="#reviews" data-i18n="nav_reviews">Yorumlar</a>
+              <a href="#contact" data-i18n="nav_contact">İletişim</a>
             </div>
 
             <div class="nav-actions">
-              <a class="cta primary small" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">
+              <a class="cta primary small" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer" data-i18n="nav_cta_booking">
                 Randevu Al
               </a>
             </div>
+          </div>
+
+          <div class="header-controls">
+            <div class="lang-switch" aria-label="Dil seçimi">
+              <button class="lang-btn is-active" type="button" data-lang="tr">TR</button>
+              <button class="lang-btn" type="button" data-lang="en">EN</button>
+              <button class="lang-btn" type="button" data-lang="ar">AR</button>
+            </div>
+            <button
+              class="nav-toggle"
+              id="navToggle"
+              type="button"
+              aria-controls="mainMenu"
+              aria-expanded="false"
+              data-i18n="menu_button">
+              Menü
+            </button>
           </div>
         </nav>
       </header>
@@ -1130,27 +1237,27 @@
       <main id="main">
         <section class="hero" id="overview">
           <div class="hero-copy reveal">
-            <span class="eyebrow">Güzellik Salonu · Beylikdüzü</span>
-            <h1>Bakımlı hissetmenin en zarif hali.</h1>
-            <p>
+            <span class="eyebrow" data-i18n="hero_eyebrow">Güzellik Salonu · Beylikdüzü</span>
+            <h1 data-i18n="hero_title">Bakımlı hissetmenin en zarif hali.</h1>
+            <p data-i18n="hero_desc">
               Hijyenik salon ortamı, özenli uygulamalar ve size özel bakım planı ile
               protez tırnak, manikür &amp; pedikür, ipek kirpik ve daha fazlasını
               konforlu bir deneyime dönüştürüyoruz.
             </p>
 
             <div class="hero-actions">
-              <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Online Randevu Al</a>
-              <a class="cta ghost" href="tel:+905521548052">Telefonla Ara</a>
-              <a class="cta ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Yol Tarifi</a>
+              <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer" data-i18n="hero_cta_booking">Online Randevu Al</a>
+              <a class="cta ghost" href="tel:+905521548052" data-i18n="hero_cta_call">Telefonla Ara</a>
+              <a class="cta ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer" data-i18n="hero_cta_map">Yol Tarifi</a>
             </div>
 
             <ul class="hero-trust" aria-label="Öne çıkan bilgiler">
               <li>
                 <strong>4.1 ★</strong>
-                40+ Google yorumu
+                <span data-i18n="hero_stat_reviews">40+ Google yorumu</span>
               </li>
               <li>
-                <strong>Her Gün Açık</strong>
+                <strong data-i18n="hero_stat_open">Her Gün Açık</strong>
                 10:00 - 20:00
               </li>
               <li>
@@ -1168,42 +1275,42 @@
                 loading="eager"
                 decoding="async"
                 fetchpriority="high" />
-              <figcaption class="hero-tag">Nail Art &amp; Protez Tırnak</figcaption>
+              <figcaption class="hero-tag" data-i18n="hero_tag">Nail Art &amp; Protez Tırnak</figcaption>
             </figure>
           </div>
         </section>
 
         <section class="section" id="booking">
-          <span class="eyebrow reveal">Kolay Randevu</span>
-          <h2 class="reveal">Randevunuzu Online Oluşturun</h2>
-          <p class="lead reveal">
+          <span class="eyebrow reveal" data-i18n="booking_eyebrow">Kolay Randevu</span>
+          <h2 class="reveal" data-i18n="booking_title">Randevunuzu Online Oluşturun</h2>
+          <p class="lead reveal" data-i18n="booking_lead">
             Uygun gün ve saati seçerek hızlıca randevunuzu planlayabilir,
             dilerseniz bizi telefonla arayarak da destek alabilirsiniz.
           </p>
 
           <div class="booking-grid">
             <article class="panel booking-info reveal">
-              <span class="badge">Hızlı ve Pratik</span>
-              <h3>2 dakikada randevu</h3>
-              <p class="lead" style="margin-bottom: 0">
+              <span class="badge" data-i18n="booking_badge">Hızlı ve Pratik</span>
+              <h3 data-i18n="booking_subtitle">2 dakikada randevu</h3>
+              <p class="lead" style="margin-bottom: 0" data-i18n="booking_desc">
                 Hizmetinizi seçin, size uygun saati belirleyin ve randevunuzu
                 birkaç adımda tamamlayın.
               </p>
 
               <ol class="booking-steps">
-                <li>Hizmetinizi ve uygun saati seçin.</li>
-                <li>Bilgilerinizi girerek randevunuzu oluşturun.</li>
-                <li>Randevu onayınızı hemen alın.</li>
+                <li data-i18n="booking_step_1">Hizmetinizi ve uygun saati seçin.</li>
+                <li data-i18n="booking_step_2">Bilgilerinizi girerek randevunuzu oluşturun.</li>
+                <li data-i18n="booking_step_3">Randevu onayınızı hemen alın.</li>
               </ol>
 
               <div class="hero-actions" style="margin-top: 18px">
-                <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Randevu Oluştur</a>
-                <a class="cta ghost" href="tel:+905521548052">Telefonla Randevu</a>
+                <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer" data-i18n="booking_cta_primary">Randevu Oluştur</a>
+                <a class="cta ghost" href="tel:+905521548052" data-i18n="booking_cta_phone">Telefonla Randevu</a>
               </div>
             </article>
 
             <article class="panel booking-embed reveal">
-              <h3 style="margin-top: 0">Randevu Takvimi</h3>
+              <h3 style="margin-top: 0" data-i18n="booking_calendar_title">Randevu Takvimi</h3>
               <div
                 id="my-cal-inline-betul-bockun"
                 class="cal-inline-host"
@@ -1211,17 +1318,17 @@
                 aria-label="Online randevu takvimi">
               </div>
               <p class="helper">
-                Takvim açılmazsa
-                <a data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer"><strong>yeni sekmede açın</strong></a>.
+                <span data-i18n="booking_helper_prefix">Takvim açılmazsa</span>
+                <a data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer"><strong data-i18n="booking_helper_link">yeni sekmede açın</strong></a>.
               </p>
             </article>
           </div>
         </section>
 
         <section class="section" id="services">
-          <span class="eyebrow reveal">Popüler Hizmetler</span>
-          <h2 class="reveal">Hizmetler ve Fiyat Aralığı</h2>
-          <p class="lead reveal">
+          <span class="eyebrow reveal" data-i18n="services_eyebrow">Popüler Hizmetler</span>
+          <h2 class="reveal" data-i18n="services_title">Hizmetler ve Fiyat Aralığı</h2>
+          <p class="lead reveal" data-i18n="services_lead">
             Size en uygun bakımı kolayca seçebilmeniz için hizmetlerimizi
             anlaşılır ve şeffaf şekilde listeledik.
           </p>
@@ -1230,9 +1337,9 @@
         </section>
 
         <section class="section" id="gallery">
-          <span class="eyebrow reveal">Görsel Deneyim</span>
-          <h2 class="reveal">Galeri</h2>
-          <p class="lead reveal">Gerçek uygulama sonuçları ve salon atmosferinden öne çıkan kareler.</p>
+          <span class="eyebrow reveal" data-i18n="gallery_eyebrow">Görsel Deneyim</span>
+          <h2 class="reveal" data-i18n="gallery_title">Galeri</h2>
+          <p class="lead reveal" data-i18n="gallery_lead">Gerçek uygulama sonuçları ve salon atmosferinden öne çıkan kareler.</p>
           <div class="media-grid">
             <figure class="media-item w-7 h-5 reveal">
               <img
@@ -1266,24 +1373,24 @@
         </section>
 
         <section class="section" id="about">
-          <span class="eyebrow reveal">Kalite ve Güven</span>
-          <h2 class="reveal">Neden Betül Böçkün Beauty?</h2>
-          <p class="lead reveal">Düzenli sterilizasyon, sakin bir salon deneyimi ve kişiye özel uygulama yaklaşımı.</p>
+          <span class="eyebrow reveal" data-i18n="about_eyebrow">Kalite ve Güven</span>
+          <h2 class="reveal" data-i18n="about_title">Neden Betül Böçkün Beauty?</h2>
+          <p class="lead reveal" data-i18n="about_lead">Düzenli sterilizasyon, sakin bir salon deneyimi ve kişiye özel uygulama yaklaşımı.</p>
 
           <div class="split-grid">
             <article class="panel about-card reveal">
-              <span class="badge">Hijyen Standardı</span>
-              <h3>Her işlemde tek kullanımlık sarf ve steril ekipman.</h3>
-              <p class="lead" style="margin-bottom: 0">
+              <span class="badge" data-i18n="about_badge_hygiene">Hijyen Standardı</span>
+              <h3 data-i18n="about_title_hygiene">Her işlemde tek kullanımlık sarf ve steril ekipman.</h3>
+              <p class="lead" style="margin-bottom: 0" data-i18n="about_text_hygiene">
                 Uygulama öncesi alan hazırlığı, işlem sonrası temizleme protokolü ve düzenli ekipman kontrolü ile
                 güvenli bir bakım süreci sağlanır.
               </p>
             </article>
 
             <article class="panel about-card reveal">
-              <span class="badge">Kişiye Özel Stil</span>
-              <h3>Doğal görünümden iddialı nail art'a kadar kişiselleştirilmiş sonuç.</h3>
-              <p class="lead" style="margin-bottom: 0">
+              <span class="badge" data-i18n="about_badge_style">Kişiye Özel Stil</span>
+              <h3 data-i18n="about_title_style">Doğal görünümden iddialı nail art'a kadar kişiselleştirilmiş sonuç.</h3>
+              <p class="lead" style="margin-bottom: 0" data-i18n="about_text_style">
                 El yapısı, kullanım alışkanlığı ve istenen stile göre işlem planı belirlenir. Bu sayede hem estetik
                 hem de uzun ömürlü sonuç elde edilir.
               </p>
@@ -1292,9 +1399,9 @@
         </section>
 
         <section class="section" id="reviews">
-          <span class="eyebrow reveal">Misafir Deneyimleri</span>
-          <h2 class="reveal">Misafir Yorumları</h2>
-          <p class="lead reveal">
+          <span class="eyebrow reveal" data-i18n="reviews_eyebrow">Misafir Deneyimleri</span>
+          <h2 class="reveal" data-i18n="reviews_title">Misafir Yorumları</h2>
+          <p class="lead reveal" data-i18n="reviews_lead">
             Misafirlerimizin deneyimleri, sunduğumuz hizmetin kalitesini
             en iyi şekilde yansıtır.
           </p>
@@ -1307,9 +1414,9 @@
               href="#"
               target="_blank"
               rel="noreferrer">
-              Google'da Yorum Bırak
+              <span data-i18n="reviews_google_btn">Google'da Yorum Bırak</span>
             </a>
-            <a class="cta ghost small" href="#reviewForm">Yorumunuzu Paylaşın</a>
+            <a class="cta ghost small" href="#reviewForm" data-i18n="reviews_share_btn">Yorumunuzu Paylaşın</a>
           </div>
 
           <div class="reviews-grid">
@@ -1333,32 +1440,32 @@
           </div>
 
           <article class="panel form-card reveal" id="reviewForm" style="margin-top: 16px">
-            <h3 style="margin-top: 0">Deneyiminizi Paylaşın</h3>
+            <h3 style="margin-top: 0" data-i18n="review_form_title">Deneyiminizi Paylaşın</h3>
             <form id="reviewIntakeForm" method="post">
               <input type="hidden" name="form_type" value="review" />
               <div class="form-grid">
                 <div class="field">
-                  <label for="reviewName">Ad Soyad</label>
+                  <label for="reviewName" data-i18n="review_label_name">Ad Soyad</label>
                   <input id="reviewName" name="name" type="text" required />
                 </div>
                 <div class="field">
-                  <label for="reviewRating">Puan</label>
+                  <label for="reviewRating" data-i18n="review_label_rating">Puan</label>
                   <select id="reviewRating" name="rating" required>
-                    <option value="">Seçiniz</option>
+                    <option value="" data-i18n="review_option_select">Seçiniz</option>
                     <option value="5">5</option>
                     <option value="4">4</option>
                     <option value="3">3</option>
                   </select>
                 </div>
                 <div class="field full">
-                  <label for="reviewMessage">Yorum</label>
+                  <label for="reviewMessage" data-i18n="review_label_message">Yorum</label>
                   <textarea id="reviewMessage" name="message" required></textarea>
                 </div>
               </div>
               <div style="margin-top: 12px">
-                <button class="cta primary" type="submit">Yorumu Gönder</button>
+                <button class="cta primary" type="submit" data-i18n="review_submit">Yorumu Gönder</button>
               </div>
-              <p class="form-note" id="reviewFormNote">
+              <p class="form-note" id="reviewFormNote" data-i18n="review_note">
                 Yorumunuz bize ulaştığında kontrol edilip yayınlanır.
               </p>
             </form>
@@ -1366,9 +1473,9 @@
         </section>
 
         <section class="section" id="instagram">
-          <span class="eyebrow reveal">Güncel Çalışmalar</span>
-          <h2 class="reveal">Instagram'da Son Paylaşımlarımız</h2>
-          <p class="lead reveal">
+          <span class="eyebrow reveal" data-i18n="instagram_eyebrow">Güncel Çalışmalar</span>
+          <h2 class="reveal" data-i18n="instagram_title">Instagram'da Son Paylaşımlarımız</h2>
+          <p class="lead reveal" data-i18n="instagram_lead">
             En yeni tırnak ve kirpik uygulamalarımızı burada görebilir,
             daha fazla örnek için profilimizi ziyaret edebilirsiniz.
           </p>
@@ -1386,24 +1493,24 @@
                 href="#"
                 target="_blank"
                 rel="noreferrer">
-                Instagram Profilini Aç
+                <span data-i18n="instagram_profile_btn">Instagram Profilini Aç</span>
               </a>
             </div>
-            <p class="helper" id="instagramHint">
+            <p class="helper" id="instagramHint" data-i18n="instagram_hint">
               Daha fazla örnek için Instagram profilimizi ziyaret edin.
             </p>
           </article>
         </section>
 
         <section class="section" id="faq">
-          <span class="eyebrow reveal">Merak Ettikleriniz</span>
-          <h2 class="reveal">Sık Sorulan Sorular</h2>
-          <p class="lead reveal">Randevu öncesi ve sonrası en çok gelen soruların hızlı cevapları.</p>
+          <span class="eyebrow reveal" data-i18n="faq_eyebrow">Merak Ettikleriniz</span>
+          <h2 class="reveal" data-i18n="faq_title">Sık Sorulan Sorular</h2>
+          <p class="lead reveal" data-i18n="faq_lead">Randevu öncesi ve sonrası en çok gelen soruların hızlı cevapları.</p>
 
           <article class="faq-list reveal">
             <details>
-              <summary>Randevu iptal veya değişiklik nasıl yapılır?</summary>
-              <p>
+              <summary data-i18n="faq_q1">Randevu iptal veya değişiklik nasıl yapılır?</summary>
+              <p data-i18n="faq_a1">
                 Online oluşturulan randevular, onay e-postası üzerinden
                 değiştirilebilir veya iptal edilebilir.
                 Telefonla oluşturulan randevular için bizi doğrudan arayabilirsiniz.
@@ -1411,24 +1518,24 @@
             </details>
 
             <details>
-              <summary>Protez tırnak işlemi ne kadar sürer?</summary>
-              <p>
+              <summary data-i18n="faq_q2">Protez tırnak işlemi ne kadar sürer?</summary>
+              <p data-i18n="faq_a2">
                 Tasarıma bağlı olarak ortalama 90-120 dakika sürer. İlk uygulamalarda planlama için en az 2 saat
                 ayırmanızı öneririz.
               </p>
             </details>
 
             <details>
-              <summary>İpek kirpik sonrası nelere dikkat etmeliyim?</summary>
-              <p>
+              <summary data-i18n="faq_q3">İpek kirpik sonrası nelere dikkat etmeliyim?</summary>
+              <p data-i18n="faq_a3">
                 İlk 24 saat su ve buhardan uzak tutmanız, yağ bazlı temizleyici kullanmamanız önerilir. Düzenli bakım ile
                 kullanım süresi uzar.
               </p>
             </details>
 
             <details>
-              <summary>Ödeme yöntemleri neler?</summary>
-              <p>
+              <summary data-i18n="faq_q4">Ödeme yöntemleri neler?</summary>
+              <p data-i18n="faq_a4">
                 Nakit ve banka havalesi seçenekleri mevcuttur. POS/QR ödeme için işletme tercihine göre ayrıca güncelleme
                 yapılabilir.
               </p>
@@ -1437,9 +1544,9 @@
         </section>
 
         <section class="section" id="news">
-          <span class="eyebrow reveal">Bakım Önerileri</span>
-          <h2 class="reveal">Blog ve Duyurular</h2>
-          <p class="lead reveal">
+          <span class="eyebrow reveal" data-i18n="news_eyebrow">Bakım Önerileri</span>
+          <h2 class="reveal" data-i18n="news_title">Blog ve Duyurular</h2>
+          <p class="lead reveal" data-i18n="news_lead">
             Güncel bakım önerileri ve salon duyurularımızla, kendinize en uygun
             bakım planını kolayca oluşturabilirsiniz.
           </p>
@@ -1475,9 +1582,9 @@
         </section>
 
         <section class="section" id="contact">
-          <span class="eyebrow reveal">Bize Ulaşın</span>
-          <h2 class="reveal">Bize Ulaşın</h2>
-          <p class="lead reveal">
+          <span class="eyebrow reveal" data-i18n="contact_eyebrow">Bize Ulaşın</span>
+          <h2 class="reveal" data-i18n="contact_title">Bize Ulaşın</h2>
+          <p class="lead reveal" data-i18n="contact_lead">
             Sorularınız, fiyat bilgisi talepleriniz veya özel istekleriniz için
             formu doldurabilirsiniz. Hızlı dönüş için telefon hattımız da aktif.
           </p>
@@ -1486,26 +1593,26 @@
             <article class="panel contact-card reveal">
               <div class="contact-list">
                 <div class="contact-item">
-                  <strong>Adres</strong>
+                  <strong data-i18n="contact_label_address">Adres</strong>
                   <span>Cumhuriyet, Eğitim Vadisi Blv. No:3, 34520 Beylikdüzü/İstanbul</span>
                 </div>
                 <div class="contact-item">
-                  <strong>Telefon</strong>
+                  <strong data-i18n="contact_label_phone">Telefon</strong>
                   <span>0552 154 80 52</span>
                 </div>
                 <div class="contact-item">
-                  <strong>Çalışma Saatleri</strong>
+                  <strong data-i18n="contact_label_hours">Çalışma Saatleri</strong>
                   <span>Her gün 10:00 - 20:00</span>
                 </div>
                 <div class="contact-item">
-                  <strong>Konum</strong>
+                  <strong data-i18n="contact_label_location">Konum</strong>
                   <span>Erçev Sitesi · Plus Code: XJRX+Q5</span>
                 </div>
               </div>
 
               <div class="hero-actions" style="margin-top: 14px">
-                <a class="cta primary" href="https://www.google.com/maps/search/?api=1&amp;query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Haritada Aç</a>
-                <a class="cta ghost" href="tel:+905521548052">Hemen Ara</a>
+                <a class="cta primary" href="https://www.google.com/maps/search/?api=1&amp;query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer" data-i18n="contact_map_btn">Haritada Aç</a>
+                <a class="cta ghost" href="tel:+905521548052" data-i18n="contact_call_btn">Hemen Ara</a>
               </div>
 
               <div class="map-frame">
@@ -1519,46 +1626,46 @@
             </article>
 
             <article class="panel form-card reveal">
-              <h3 style="margin-top: 0">İletişim Formu</h3>
+              <h3 style="margin-top: 0" data-i18n="contact_form_title">İletişim Formu</h3>
               <form id="contactForm" method="post">
                 <input type="hidden" name="form_type" value="contact" />
                 <div class="form-grid">
                   <div class="field">
-                    <label for="name">Ad Soyad</label>
+                    <label for="name" data-i18n="contact_label_name">Ad Soyad</label>
                     <input id="name" name="name" type="text" autocomplete="name" required />
                   </div>
 
                   <div class="field">
-                    <label for="phone">Telefon</label>
+                    <label for="phone" data-i18n="contact_label_phone">Telefon</label>
                     <input id="phone" name="phone" type="tel" autocomplete="tel" required />
                   </div>
 
                   <div class="field">
-                    <label for="topic">Konu</label>
+                    <label for="topic" data-i18n="contact_label_topic">Konu</label>
                     <select id="topic" name="topic" required>
-                      <option value="">Seçiniz</option>
-                      <option value="price">Fiyat bilgisi</option>
-                      <option value="booking">Randevu desteği</option>
-                      <option value="service">Hizmet detayı</option>
-                      <option value="other">Diğer</option>
+                      <option value="" data-i18n="contact_option_select">Seçiniz</option>
+                      <option value="price" data-i18n="contact_topic_price">Fiyat bilgisi</option>
+                      <option value="booking" data-i18n="contact_topic_booking">Randevu desteği</option>
+                      <option value="service" data-i18n="contact_topic_service">Hizmet detayı</option>
+                      <option value="other" data-i18n="contact_topic_other">Diğer</option>
                     </select>
                   </div>
 
                   <div class="field">
-                    <label for="preferredDate">Tercih edilen tarih (opsiyonel)</label>
+                    <label for="preferredDate" data-i18n="contact_label_date">Tercih edilen tarih (opsiyonel)</label>
                     <input id="preferredDate" name="preferred_date" type="date" />
                   </div>
 
                   <div class="field full">
-                    <label for="message">Mesaj</label>
+                    <label for="message" data-i18n="contact_label_message">Mesaj</label>
                     <textarea id="message" name="message" required></textarea>
                   </div>
                 </div>
 
                 <div style="margin-top: 12px">
-                  <button class="cta primary" type="submit">Mesajı Gönder</button>
+                  <button class="cta primary" type="submit" data-i18n="contact_submit">Mesajı Gönder</button>
                 </div>
-                <p class="form-note" id="contactFormNote">
+                <p class="form-note" id="contactFormNote" data-i18n="contact_note">
                   Mesajınız bize ulaştığında en kısa sürede dönüş yapılır.
                 </p>
               </form>
@@ -1570,16 +1677,16 @@
       <footer>
         <span>© <span id="year"></span> Betül Böçkün Beauty · Beylikdüzü/İstanbul</span>
         <span class="footer-links">
-          <a href="#services">Hizmetler</a>
-          <a href="#booking">Randevu</a>
-          <a href="#contact">İletişim</a>
+          <a href="#services" data-i18n="footer_services">Hizmetler</a>
+          <a href="#booking" data-i18n="footer_booking">Randevu</a>
+          <a href="#contact" data-i18n="footer_contact">İletişim</a>
         </span>
       </footer>
 
       <div class="sticky-bar" aria-label="Mobil hızlı işlemler">
-        <a href="tel:+905521548052">Ara</a>
-        <a data-config-link="calBookingUrl" class="primary" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Randevu</a>
-        <a href="#contact">İletişim</a>
+        <a href="tel:+905521548052" data-i18n="sticky_call">Ara</a>
+        <a data-config-link="calBookingUrl" class="primary" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer" data-i18n="sticky_booking">Randevu</a>
+        <a href="#contact" data-i18n="sticky_contact">İletişim</a>
       </div>
     </div>
 
@@ -1595,89 +1702,113 @@
       };
 
       const SERVICE_CATEGORIES = [
-        { id: "all", label: "Tümü" },
-        { id: "nails", label: "Tırnak" },
-        { id: "lashes", label: "Kirpik" },
-        { id: "care", label: "Bakım" }
+        { id: "all", label: { tr: "Tümü", en: "All", ar: "الكل" } },
+        { id: "nails", label: { tr: "Tırnak", en: "Nails", ar: "الأظافر" } },
+        { id: "lashes", label: { tr: "Kirpik", en: "Lashes", ar: "الرموش" } },
+        { id: "care", label: { tr: "Bakım", en: "Care", ar: "العناية" } }
       ];
 
       const SERVICE_DATA = [
         {
           id: "prosthetic-nails",
           category: "nails",
-          title: "Protez Tırnak",
-          description: "Kişiye özel form, dayanıklı uygulama ve tasarım seçenekleri.",
-          duration: "90-120 dk",
+          title: { tr: "Protez Tırnak", en: "Nail Extensions", ar: "تركيب الأظافر" },
+          description: {
+            tr: "Kişiye özel form, dayanıklı uygulama ve tasarım seçenekleri.",
+            en: "Custom shape, durable application, and personalized design options.",
+            ar: "تصميم مخصص، ثبات عالٍ، وخيارات متنوعة تناسب ذوقك."
+          },
+          duration: { tr: "90-120 dk", en: "90-120 min", ar: "90-120 دقيقة" },
           from: "₺900",
           prices: [
-            { label: "Yeni set", value: "₺900+" },
-            { label: "Bakım", value: "₺600+" },
-            { label: "Nail art", value: "₺100+" }
+            { label: { tr: "Yeni set", en: "New set", ar: "جلسة جديدة" }, value: "₺900+" },
+            { label: { tr: "Bakım", en: "Refill", ar: "صيانة" }, value: "₺600+" },
+            { label: { tr: "Nail art", en: "Nail art", ar: "نيل آرت" }, value: "₺100+" }
           ]
         },
         {
           id: "manicure-pedicure",
           category: "care",
-          title: "Manikür & Pedikür",
-          description: "Hijyen odaklı klasik veya spa destekli bakım seçenekleri.",
-          duration: "45-75 dk",
+          title: { tr: "Manikür & Pedikür", en: "Manicure & Pedicure", ar: "مانيكير وباديكير" },
+          description: {
+            tr: "Hijyen odaklı klasik veya spa destekli bakım seçenekleri.",
+            en: "Hygiene-focused classic and spa-supported care options.",
+            ar: "خيارات عناية كلاسيكية أو سبا مع تركيز كامل على النظافة."
+          },
+          duration: { tr: "45-75 dk", en: "45-75 min", ar: "45-75 دقيقة" },
           from: "₺350",
           prices: [
-            { label: "Klasik manikür", value: "₺350" },
-            { label: "Klasik pedikür", value: "₺400" },
-            { label: "Spa paket", value: "₺650" }
+            { label: { tr: "Klasik manikür", en: "Classic manicure", ar: "مانيكير كلاسيكي" }, value: "₺350" },
+            { label: { tr: "Klasik pedikür", en: "Classic pedicure", ar: "باديكير كلاسيكي" }, value: "₺400" },
+            { label: { tr: "Spa paket", en: "Spa package", ar: "باقة سبا" }, value: "₺650" }
           ]
         },
         {
           id: "lash-extension",
           category: "lashes",
-          title: "İpek Kirpik",
-          description: "Doğal, yoğun veya volume stiller ile uzun süre kalıcılık.",
-          duration: "70-100 dk",
+          title: { tr: "İpek Kirpik", en: "Lash Extensions", ar: "تركيب رموش" },
+          description: {
+            tr: "Doğal, yoğun veya volume stiller ile uzun süre kalıcılık.",
+            en: "Natural, dense, or volume styles with long-lasting results.",
+            ar: "ستايلات طبيعية أو كثيفة أو فوليوم مع ثبات طويل."
+          },
+          duration: { tr: "70-100 dk", en: "70-100 min", ar: "70-100 دقيقة" },
           from: "₺800",
           prices: [
-            { label: "Yeni set", value: "₺800+" },
-            { label: "Dolgu", value: "₺500+" },
-            { label: "Çıkarma", value: "₺250" }
+            { label: { tr: "Yeni set", en: "New set", ar: "جلسة جديدة" }, value: "₺800+" },
+            { label: { tr: "Dolgu", en: "Refill", ar: "تعبئة" }, value: "₺500+" },
+            { label: { tr: "Çıkarma", en: "Removal", ar: "إزالة" }, value: "₺250" }
           ]
         },
         {
           id: "brows",
           category: "care",
-          title: "Kaş & Bıyık",
-          description: "Yüz hatlarına uygun ölçü ve hassas uygulama.",
-          duration: "20-35 dk",
+          title: { tr: "Kaş & Bıyık", en: "Brows & Upper Lip", ar: "الحواجب والشفاه" },
+          description: {
+            tr: "Yüz hatlarına uygun ölçü ve hassas uygulama.",
+            en: "Precise application tailored to your facial features.",
+            ar: "تطبيق دقيق ومناسب لتفاصيل الوجه."
+          },
+          duration: { tr: "20-35 dk", en: "20-35 min", ar: "20-35 دقيقة" },
           from: "₺150",
           prices: [
-            { label: "Kaş alımı", value: "₺150" },
-            { label: "Bıyık", value: "₺100" },
-            { label: "Kaş + bıyık", value: "₺220" }
+            { label: { tr: "Kaş alımı", en: "Brow shaping", ar: "تنظيف حواجب" }, value: "₺150" },
+            { label: { tr: "Bıyık", en: "Upper lip", ar: "الشفاه" }, value: "₺100" },
+            { label: { tr: "Kaş + bıyık", en: "Brow + upper lip", ar: "حواجب + شفاه" }, value: "₺220" }
           ]
         },
         {
           id: "gel-polish",
           category: "nails",
-          title: "Kalıcı Oje",
-          description: "Yüksek parlaklık ve uzun süreli dayanıklılık.",
-          duration: "40-60 dk",
+          title: { tr: "Kalıcı Oje", en: "Gel Polish", ar: "طلاء جل دائم" },
+          description: {
+            tr: "Yüksek parlaklık ve uzun süreli dayanıklılık.",
+            en: "High shine and long-lasting durability.",
+            ar: "لمعان قوي وثبات لفترة طويلة."
+          },
+          duration: { tr: "40-60 dk", en: "40-60 min", ar: "40-60 دقيقة" },
           from: "₺400",
           prices: [
-            { label: "Tek renk", value: "₺400" },
-            { label: "French", value: "₺460" },
-            { label: "Güçlendirme", value: "₺520" }
+            { label: { tr: "Tek renk", en: "Single color", ar: "لون واحد" }, value: "₺400" },
+            { label: { tr: "French", en: "French", ar: "فرنش" }, value: "₺460" },
+            { label: { tr: "Güçlendirme", en: "Strengthening", ar: "تقوية" }, value: "₺520" }
           ]
         },
         {
           id: "ritual-care",
           category: "care",
-          title: "Bakım Ritüelleri",
-          description: "El-ayak-cilt odaklı yenileyici bakım paketleri.",
-          duration: "60-90 dk",
+          title: { tr: "Bakım Ritüelleri", en: "Care Rituals", ar: "طقوس العناية" },
+          description: {
+            tr: "El-ayak-cilt odaklı yenileyici bakım paketleri.",
+            en: "Renewing packages focused on hands, feet, and skin.",
+            ar: "باقات تجديد لليدين والقدمين والبشرة."
+          },
+          duration: { tr: "60-90 dk", en: "60-90 min", ar: "60-90 دقيقة" },
           from: "₺550",
           prices: [
-            { label: "El bakım ritüeli", value: "₺550" },
-            { label: "Ayak bakım ritüeli", value: "₺600" },
-            { label: "Kombine bakım", value: "₺980" }
+            { label: { tr: "El bakım ritüeli", en: "Hand care ritual", ar: "عناية باليدين" }, value: "₺550" },
+            { label: { tr: "Ayak bakım ritüeli", en: "Foot care ritual", ar: "عناية بالقدمين" }, value: "₺600" },
+            { label: { tr: "Kombine bakım", en: "Combined care", ar: "عناية متكاملة" }, value: "₺980" }
           ]
         }
       ];
@@ -1697,6 +1828,266 @@
         "https://www.instagram.com/betulbockunbeauty/p/CxfuHqVoU9J/"
       ];
 
+      const LANGUAGE_PACKS = {
+        en: {
+          skip_link: "Skip to content",
+          menu_button: "Menu",
+          nav_booking: "Booking",
+          nav_services: "Services",
+          nav_gallery: "Gallery",
+          nav_reviews: "Reviews",
+          nav_contact: "Contact",
+          nav_cta_booking: "Book Now",
+          hero_eyebrow: "Beauty Salon · Beylikduzu",
+          hero_title: "The most elegant way to feel polished.",
+          hero_desc:
+            "With a hygienic salon environment, attentive applications, and personalized care plans, we transform nail, lash, and beauty treatments into a comfortable experience.",
+          hero_cta_booking: "Book Online",
+          hero_cta_call: "Call Now",
+          hero_cta_map: "Get Directions",
+          hero_stat_reviews: "40+ Google reviews",
+          hero_stat_open: "Open Daily",
+          hero_tag: "Nail Art & Extensions",
+          booking_eyebrow: "Easy Booking",
+          booking_title: "Book Your Appointment Online",
+          booking_lead:
+            "Choose your preferred day and time in minutes, or call us directly for quick assistance.",
+          booking_badge: "Fast & Practical",
+          booking_subtitle: "Book in 2 minutes",
+          booking_desc: "Select your service, choose your time, and complete your booking in a few simple steps.",
+          booking_step_1: "Choose your service and preferred time.",
+          booking_step_2: "Enter your details to confirm your booking.",
+          booking_step_3: "Receive your booking confirmation instantly.",
+          booking_cta_primary: "Create Booking",
+          booking_cta_phone: "Call for Booking",
+          booking_calendar_title: "Appointment Calendar",
+          booking_helper_prefix: "If the calendar does not load,",
+          booking_helper_link: "open in a new tab",
+          services_eyebrow: "Popular Services",
+          services_title: "Services & Price Range",
+          services_lead: "We list our services clearly so you can choose the right option with confidence.",
+          gallery_eyebrow: "Visual Experience",
+          gallery_title: "Gallery",
+          gallery_lead: "Highlights from real applications and our salon atmosphere.",
+          about_eyebrow: "Quality & Trust",
+          about_title: "Why Betul Bockun Beauty?",
+          about_lead: "Regular sterilization, calm atmosphere, and personalized application in every session.",
+          about_badge_hygiene: "Hygiene Standard",
+          about_title_hygiene: "Sterile tools and single-use supplies in every session.",
+          about_text_hygiene:
+            "Each area is prepared before treatment and sanitized after each session for a safe beauty experience.",
+          about_badge_style: "Personalized Style",
+          about_title_style: "From natural looks to bold nail art, tailored just for you.",
+          about_text_style:
+            "We plan each treatment based on your hand structure, daily routine, and preferred style.",
+          reviews_eyebrow: "Guest Experiences",
+          reviews_title: "Guest Reviews",
+          reviews_lead: "Our guests’ experiences reflect the quality of our service best.",
+          reviews_google_btn: "Leave a Google Review",
+          reviews_share_btn: "Share Your Review",
+          review_form_title: "Share Your Experience",
+          review_label_name: "Full Name",
+          review_label_rating: "Rating",
+          review_option_select: "Select",
+          review_label_message: "Review",
+          review_submit: "Submit Review",
+          review_note: "Your review is reviewed before publishing.",
+          instagram_eyebrow: "Latest Work",
+          instagram_title: "Latest Instagram Posts",
+          instagram_lead:
+            "See our newest nail and lash applications here, and visit our profile for more inspiration.",
+          instagram_profile_btn: "Open Instagram Profile",
+          instagram_hint: "Visit our profile to see more work.",
+          faq_eyebrow: "What You Wonder",
+          faq_title: "Frequently Asked Questions",
+          faq_lead: "Quick answers to the most common questions before and after your appointment.",
+          faq_q1: "How can I cancel or reschedule my appointment?",
+          faq_a1:
+            "Bookings made online can be changed or canceled through your confirmation email. For phone bookings, please call us directly.",
+          faq_q2: "How long does a nail extension session take?",
+          faq_a2: "Depending on the design, it usually takes 90-120 minutes. For first sessions, we recommend planning at least 2 hours.",
+          faq_q3: "What should I do after lash extensions?",
+          faq_a3:
+            "Avoid water and steam for the first 24 hours and avoid oil-based cleansers. Regular touch-ups extend retention.",
+          faq_q4: "Which payment methods are available?",
+          faq_a4:
+            "Cash and bank transfer are available. Card/QR options can be added based on business preference.",
+          news_eyebrow: "Care Tips",
+          news_title: "Blog & Announcements",
+          news_lead:
+            "Follow our latest care tips and salon updates to plan your beauty routine with ease.",
+          contact_eyebrow: "Contact Us",
+          contact_title: "Contact Us",
+          contact_lead:
+            "Use the form for questions, pricing requests, or custom requests. For faster support, you can also call us.",
+          contact_label_address: "Address",
+          contact_label_phone: "Phone",
+          contact_label_hours: "Working Hours",
+          contact_label_location: "Location",
+          contact_map_btn: "Open Map",
+          contact_call_btn: "Call Now",
+          contact_form_title: "Contact Form",
+          contact_label_name: "Full Name",
+          contact_label_topic: "Subject",
+          contact_option_select: "Select",
+          contact_topic_price: "Price information",
+          contact_topic_booking: "Booking support",
+          contact_topic_service: "Service details",
+          contact_topic_other: "Other",
+          contact_label_date: "Preferred date (optional)",
+          contact_label_message: "Message",
+          contact_submit: "Send Message",
+          contact_note: "We will get back to you as soon as possible.",
+          footer_services: "Services",
+          footer_booking: "Booking",
+          footer_contact: "Contact",
+          sticky_call: "Call",
+          sticky_booking: "Booking",
+          sticky_contact: "Contact"
+        },
+        ar: {
+          skip_link: "انتقل إلى المحتوى",
+          menu_button: "القائمة",
+          nav_booking: "الحجز",
+          nav_services: "الخدمات",
+          nav_gallery: "المعرض",
+          nav_reviews: "التقييمات",
+          nav_contact: "التواصل",
+          nav_cta_booking: "احجز الآن",
+          hero_eyebrow: "صالون تجميل · بيليك دوزو",
+          hero_title: "أجمل طريقة لتشعري بالأناقة.",
+          hero_desc:
+            "في أجواء نظيفة ومريحة ومع تطبيقات دقيقة وخطط عناية مخصصة، نحول جلسات الجمال إلى تجربة مميزة لك.",
+          hero_cta_booking: "احجزي أونلاين",
+          hero_cta_call: "اتصلي الآن",
+          hero_cta_map: "الموقع",
+          hero_stat_reviews: "أكثر من 40 تقييم Google",
+          hero_stat_open: "مفتوح يوميًا",
+          hero_tag: "نيل آرت وتركيب أظافر",
+          booking_eyebrow: "حجز سهل",
+          booking_title: "احجزي موعدك أونلاين",
+          booking_lead: "اختاري اليوم والوقت المناسبين خلال دقائق، أو تواصلي معنا هاتفيًا بسرعة.",
+          booking_badge: "سريع وعملي",
+          booking_subtitle: "حجز خلال دقيقتين",
+          booking_desc: "اختاري الخدمة والوقت المناسب ثم أكدي الحجز بخطوات بسيطة.",
+          booking_step_1: "اختاري الخدمة والوقت المناسب.",
+          booking_step_2: "أدخلي بياناتك لتأكيد الموعد.",
+          booking_step_3: "استلمي تأكيد الموعد فورًا.",
+          booking_cta_primary: "إنشاء الحجز",
+          booking_cta_phone: "حجز عبر الهاتف",
+          booking_calendar_title: "تقويم المواعيد",
+          booking_helper_prefix: "إذا لم يظهر التقويم،",
+          booking_helper_link: "افتحيه في نافذة جديدة",
+          services_eyebrow: "الخدمات الأكثر طلبًا",
+          services_title: "الخدمات ونطاق الأسعار",
+          services_lead: "نوضح خدماتنا بشكل بسيط لتختاري الأنسب لك بسهولة.",
+          gallery_eyebrow: "تجربة بصرية",
+          gallery_title: "المعرض",
+          gallery_lead: "لقطات من أعمالنا الحقيقية وأجواء الصالون.",
+          about_eyebrow: "الجودة والثقة",
+          about_title: "لماذا Betul Bockun Beauty؟",
+          about_lead: "تعقيم منتظم، أجواء هادئة، وتطبيق مخصص لكل عميلة.",
+          about_badge_hygiene: "معيار النظافة",
+          about_title_hygiene: "أدوات معقمة ومستلزمات استخدام واحد في كل جلسة.",
+          about_text_hygiene: "نجهز المنطقة قبل كل جلسة وننظفها بعدها لضمان تجربة آمنة.",
+          about_badge_style: "ستايل مخصص",
+          about_title_style: "من الستايل الطبيعي إلى الجريء حسب ذوقك.",
+          about_text_style: "نحدد كل جلسة حسب شكل اليد والروتين اليومي والنتيجة المطلوبة.",
+          reviews_eyebrow: "تجارب العميلات",
+          reviews_title: "آراء العميلات",
+          reviews_lead: "تجارب العميلات هي أفضل دليل على جودة الخدمة لدينا.",
+          reviews_google_btn: "اتركي تقييم Google",
+          reviews_share_btn: "شاركي تجربتك",
+          review_form_title: "شاركي تجربتك",
+          review_label_name: "الاسم الكامل",
+          review_label_rating: "التقييم",
+          review_option_select: "اختاري",
+          review_label_message: "التعليق",
+          review_submit: "إرسال التعليق",
+          review_note: "يتم مراجعة التعليق قبل نشره.",
+          instagram_eyebrow: "أحدث الأعمال",
+          instagram_title: "آخر منشورات Instagram",
+          instagram_lead: "شاهدي أحدث تطبيقات الأظافر والرموش، وزوري صفحتنا لمزيد من الأمثلة.",
+          instagram_profile_btn: "فتح صفحة Instagram",
+          instagram_hint: "زوري صفحتنا لمزيد من الأعمال.",
+          faq_eyebrow: "الأسئلة الشائعة",
+          faq_title: "الأسئلة الشائعة",
+          faq_lead: "إجابات سريعة لأكثر الأسئلة قبل وبعد الموعد.",
+          faq_q1: "كيف يمكن إلغاء أو تغيير الموعد؟",
+          faq_a1: "يمكن تعديل أو إلغاء المواعيد الأونلاين من رسالة التأكيد. أما المواعيد الهاتفية فيرجى الاتصال بنا.",
+          faq_q2: "كم تستغرق جلسة تركيب الأظافر؟",
+          faq_a2: "حسب التصميم، غالبًا بين 90 و120 دقيقة. للجلسة الأولى يُفضل تخصيص ساعتين.",
+          faq_q3: "ما التعليمات بعد تركيب الرموش؟",
+          faq_a3: "تجنبي الماء والبخار أول 24 ساعة وتجنبي المنظفات الزيتية. الصيانة الدورية تطيل الثبات.",
+          faq_q4: "ما طرق الدفع المتاحة؟",
+          faq_a4: "متاح الدفع نقدًا أو تحويل بنكي. ويمكن إضافة الدفع بالبطاقة أو QR لاحقًا.",
+          news_eyebrow: "نصائح العناية",
+          news_title: "المدونة والإعلانات",
+          news_lead: "تابعي أحدث نصائح العناية وإعلانات الصالون لتخطيت روتينك بسهولة.",
+          contact_eyebrow: "تواصلي معنا",
+          contact_title: "تواصلي معنا",
+          contact_lead: "للأسئلة أو الأسعار أو الطلبات الخاصة يمكنك تعبئة النموذج، أو الاتصال بنا مباشرة.",
+          contact_label_address: "العنوان",
+          contact_label_phone: "الهاتف",
+          contact_label_hours: "ساعات العمل",
+          contact_label_location: "الموقع",
+          contact_map_btn: "فتح الخريطة",
+          contact_call_btn: "اتصلي الآن",
+          contact_form_title: "نموذج التواصل",
+          contact_label_name: "الاسم الكامل",
+          contact_label_topic: "الموضوع",
+          contact_option_select: "اختاري",
+          contact_topic_price: "معلومات الأسعار",
+          contact_topic_booking: "مساعدة الحجز",
+          contact_topic_service: "تفاصيل الخدمة",
+          contact_topic_other: "أخرى",
+          contact_label_date: "التاريخ المفضل (اختياري)",
+          contact_label_message: "الرسالة",
+          contact_submit: "إرسال الرسالة",
+          contact_note: "سنعاود التواصل معك في أقرب وقت ممكن.",
+          footer_services: "الخدمات",
+          footer_booking: "الحجز",
+          footer_contact: "التواصل",
+          sticky_call: "اتصال",
+          sticky_booking: "حجز",
+          sticky_contact: "تواصل"
+        }
+      };
+
+      const EXTRA_STRINGS = {
+        tr: {
+          service_duration: "Süre",
+          service_from: "Başlangıç",
+          contact_note_inactive: "Form şu anda aktif değil. Lütfen telefonla bize ulaşın.",
+          review_note_inactive: "Yorum formu şu anda aktif değil.",
+          instagram_feed_active: "Instagram akışı aktif.",
+          instagram_feed_hint: "Son paylaşımlarımızı doğrudan Instagram'dan görüntüleyebilirsiniz.",
+          instagram_open: "Instagram'da Aç"
+        },
+        en: {
+          service_duration: "Duration",
+          service_from: "Starting at",
+          contact_note_inactive: "The form is currently unavailable. Please contact us by phone.",
+          review_note_inactive: "The review form is currently unavailable.",
+          instagram_feed_active: "Instagram feed is active.",
+          instagram_feed_hint: "You can view our latest posts directly from Instagram.",
+          instagram_open: "Open on Instagram"
+        },
+        ar: {
+          service_duration: "المدة",
+          service_from: "تبدأ من",
+          contact_note_inactive: "النموذج غير متاح حاليًا. يرجى التواصل معنا هاتفيًا.",
+          review_note_inactive: "نموذج التقييم غير متاح حاليًا.",
+          instagram_feed_active: "خلاصة Instagram مفعلة.",
+          instagram_feed_hint: "يمكنك مشاهدة أحدث منشوراتنا مباشرة من Instagram.",
+          instagram_open: "افتح في Instagram"
+        }
+      };
+
+      const DEFAULT_STRINGS = {};
+      let activeLanguage = "tr";
+      let activeServiceCategory = "all";
+
       function isConfiguredUrl(value) {
         return (
           typeof value === "string" &&
@@ -1710,6 +2101,64 @@
         el.classList.add("is-disabled");
         el.setAttribute("aria-disabled", "true");
         el.setAttribute("href", "#");
+      }
+
+      function getLanguageString(key, lang = activeLanguage) {
+        const extra = EXTRA_STRINGS[lang] && EXTRA_STRINGS[lang][key];
+        if (extra) return extra;
+        const pack = LANGUAGE_PACKS[lang] && LANGUAGE_PACKS[lang][key];
+        if (pack) return pack;
+        return DEFAULT_STRINGS[key] || "";
+      }
+
+      function getLocalizedText(value) {
+        if (typeof value === "string") return value;
+        if (!value || typeof value !== "object") return "";
+        return value[activeLanguage] || value.tr || value.en || "";
+      }
+
+      function applyLanguage(lang) {
+        const targetLang = ["tr", "en", "ar"].includes(lang) ? lang : "tr";
+        activeLanguage = targetLang;
+
+        document.documentElement.lang = targetLang;
+        document.documentElement.dir = targetLang === "ar" ? "rtl" : "ltr";
+
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (!key) return;
+          const text = getLanguageString(key, targetLang);
+          if (text) el.textContent = text;
+        });
+
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.classList.toggle("is-active", btn.getAttribute("data-lang") === targetLang);
+        });
+
+        renderServiceFilters(activeServiceCategory);
+        renderServices(activeServiceCategory);
+        initInstagramWidget();
+        initForms();
+        localStorage.setItem("site_lang", targetLang);
+      }
+
+      function initLanguageSwitcher() {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (!key || DEFAULT_STRINGS[key]) return;
+          DEFAULT_STRINGS[key] = el.textContent.trim();
+        });
+
+        document.querySelectorAll(".lang-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const lang = btn.getAttribute("data-lang");
+            applyLanguage(lang);
+          });
+        });
+
+        const saved = localStorage.getItem("site_lang");
+        const initial = ["tr", "en", "ar"].includes(saved) ? saved : "tr";
+        applyLanguage(initial);
       }
 
       function applyConfigLinks() {
@@ -1807,7 +2256,8 @@
         }, 2800);
       }
 
-      function renderServiceFilters(active = "all") {
+      function renderServiceFilters(active = activeServiceCategory) {
+        activeServiceCategory = active;
         const filterRoot = document.getElementById("serviceFilters");
         if (!filterRoot) return;
 
@@ -1816,7 +2266,7 @@
           const btn = document.createElement("button");
           btn.type = "button";
           btn.className = `chip ${category.id === active ? "active" : ""}`;
-          btn.textContent = category.label;
+          btn.textContent = getLocalizedText(category.label);
           btn.setAttribute("data-category", category.id);
           btn.addEventListener("click", () => {
             renderServiceFilters(category.id);
@@ -1826,7 +2276,8 @@
         });
       }
 
-      function renderServices(category = "all") {
+      function renderServices(category = activeServiceCategory) {
+        activeServiceCategory = category;
         const grid = document.getElementById("servicesGrid");
         if (!grid) return;
 
@@ -1840,14 +2291,14 @@
           const card = document.createElement("article");
           card.className = "panel service-card reveal is-visible";
           card.innerHTML = `
-            <h3>${service.title}</h3>
-            <p>${service.description}</p>
-            <div class="service-meta">Süre: ${service.duration} · Başlangıç: <strong>${service.from}</strong></div>
+            <h3>${getLocalizedText(service.title)}</h3>
+            <p>${getLocalizedText(service.description)}</p>
+            <div class="service-meta">${getLanguageString("service_duration")}: ${getLocalizedText(service.duration)} · ${getLanguageString("service_from")}: <strong>${service.from}</strong></div>
             <ul class="price-list">
               ${service.prices
                 .map(
                   (row) =>
-                    `<li class="price-row"><span>${row.label}</span><strong>${row.value}</strong></li>`
+                    `<li class="price-row"><span>${getLocalizedText(row.label)}</span><strong>${row.value}</strong></li>`
                 )
                 .join("")}
             </ul>
@@ -1871,7 +2322,7 @@
             </iframe>
           `;
           if (hint) {
-            hint.textContent = "Instagram akışı aktif.";
+            hint.textContent = getLanguageString("instagram_feed_active");
           }
           return;
         }
@@ -1906,13 +2357,13 @@
               referrerpolicy="strict-origin-when-cross-origin"
               src="${embedUrl}">
             </iframe>
-            <a class="instagram-open" href="${url}" target="_blank" rel="noreferrer">Instagram'da Aç</a>
+            <a class="instagram-open" href="${url}" target="_blank" rel="noreferrer">${getLanguageString("instagram_open")}</a>
           `;
           fallback.appendChild(card);
         });
 
         if (hint) {
-          hint.textContent = "Son paylaşımlarımızı doğrudan Instagram'dan görüntüleyebilirsiniz.";
+          hint.textContent = getLanguageString("instagram_feed_hint");
         }
       }
 
@@ -1939,15 +2390,15 @@
 
         if (contactNote) {
           contactNote.textContent = hasFormEndpoint
-            ? "Mesajınız bize ulaştığında en kısa sürede dönüş yapılır."
-            : "Form şu anda aktif değil. Lütfen telefonla bize ulaşın.";
+            ? getLanguageString("contact_note")
+            : getLanguageString("contact_note_inactive");
           contactNote.classList.toggle("warn", !hasFormEndpoint);
         }
 
         if (reviewNote) {
           reviewNote.textContent = hasFormEndpoint
-            ? "Yorumunuz bize ulaştığında kontrol edilip yayınlanır."
-            : "Yorum formu şu anda aktif değil.";
+            ? getLanguageString("review_note")
+            : getLanguageString("review_note_inactive");
           reviewNote.classList.toggle("warn", !hasFormEndpoint);
         }
       }
@@ -2052,10 +2503,7 @@
 
       applyConfigLinks();
       initCalInlineEmbed();
-      renderServiceFilters("all");
-      renderServices("all");
-      initInstagramWidget();
-      initForms();
+      initLanguageSwitcher();
       initNav();
       initReveal();
       initImageLoading();
