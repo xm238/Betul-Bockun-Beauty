@@ -3,31 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Betül Böçkün Beauty | Güzellik Salonu</title>
+    <title>Betül Böçkün Beauty | Randevu, Tırnak ve Kirpik Hizmetleri</title>
     <meta
       name="description"
-      content="Betül Böçkün Beauty, Beylikdüzü'nde hijyenik bakım, protez tırnak, manikür & pedikür ve ipek kirpik hizmetleri sunan güzellik salonu." />
+      content="Betül Böçkün Beauty Beylikdüzü'nde protez tırnak, manikür &amp; pedikür, ipek kirpik ve bakım hizmetleri sunar. Online randevu, fiyat bilgisi ve iletişim detayları tek sayfada." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f8ecf1" />
+    <link rel="canonical" href="https://xm238.github.io/Betul-Bockun-Beauty/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Betül Böçkün Beauty | Beylikdüzü Güzellik Salonu" />
+    <meta
+      property="og:description"
+      content="Hijyenik bakım, protez tırnak, manikür &amp; pedikür ve ipek kirpik hizmetleri. Online randevu oluşturun." />
+    <meta property="og:url" content="https://xm238.github.io/Betul-Bockun-Beauty/" />
+    <meta property="og:image" content="https://xm238.github.io/Betul-Bockun-Beauty/betul-bockun-logo.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Betül Böçkün Beauty" />
+    <meta
+      name="twitter:description"
+      content="Beylikdüzü'nde profesyonel güzellik hizmetleri ve online randevu sistemi." />
+    <meta name="twitter:image" content="https://xm238.github.io/Betul-Bockun-Beauty/betul-bockun-logo.png" />
+
+    <link rel="icon" href="betul-bockun-logo.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap"
       rel="stylesheet" />
+
     <style>
       :root {
-        --bg: #faeef2;
-        --ink: #2a1720;
-        --muted: #6f4d5b;
+        --bg: #f8ecf1;
+        --bg-soft: #fff7fa;
+        --ink: #2b1821;
+        --muted: #6f4f5d;
         --accent: #c79a4a;
-        --accent-2: #f1c87a;
-        --rose: #f7dbe3;
-        --rose-2: #ffeef4;
-        --plum: #4a2733;
-        --shadow: 0 20px 60px rgba(64, 29, 43, 0.2);
-        --shadow-soft: 0 16px 40px rgba(64, 29, 43, 0.12);
+        --accent-strong: #b78934;
+        --accent-soft: #f2d7a2;
+        --plum: #4c2632;
+        --border: rgba(199, 154, 74, 0.25);
+        --card: #ffffff;
+        --ok: #1d7a3a;
+        --danger: #a61d35;
+        --radius-sm: 12px;
+        --radius-md: 18px;
+        --radius-lg: 26px;
+        --shadow-sm: 0 12px 28px rgba(68, 31, 45, 0.12);
+        --shadow-md: 0 20px 44px rgba(68, 31, 45, 0.16);
+        --max: 1200px;
       }
 
       * {
         box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
@@ -35,13 +68,12 @@
         font-family: "Manrope", system-ui, -apple-system, sans-serif;
         color: var(--ink);
         background:
-          radial-gradient(900px 600px at 20% -10%, #ffe6ee 0%, transparent 60%),
-          radial-gradient(800px 600px at 100% 10%, #fff1f6 0%, transparent 55%),
+          radial-gradient(900px 620px at 8% -12%, #ffe5ef 0%, transparent 65%),
+          radial-gradient(880px 620px at 100% 10%, #fff2f6 0%, transparent 64%),
           var(--bg);
       }
 
-      img {
-        max-width: 100%;
+      main {
         display: block;
       }
 
@@ -50,47 +82,175 @@
         text-decoration: none;
       }
 
+      img {
+        max-width: 100%;
+        display: block;
+        border: 0;
+        opacity: 0.001;
+        transition: opacity 0.35s ease;
+      }
+
+      img.is-loaded {
+        opacity: 1;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 12px;
+        top: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--plum);
+        color: #fff;
+        transform: translateY(-160%);
+        transition: transform 0.2s ease;
+        z-index: 99;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
       .page {
-        overflow-x: hidden;
+        overflow-x: clip;
       }
 
-      .nav {
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        background: rgba(250, 238, 242, 0.96);
-        border-bottom: 1px solid rgba(199, 154, 74, 0.15);
-        backdrop-filter: blur(10px);
-        box-shadow: 0 10px 26px rgba(199, 154, 74, 0.12);
-      }
-
-      .nav-inner {
-        max-width: 1200px;
+      .section {
+        width: min(var(--max), 100%);
         margin: 0 auto;
-        padding: 16px 24px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
+        padding: clamp(52px, 8vw, 92px) 20px;
       }
 
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        font-weight: 700;
+      .section h2 {
+        margin: 0 0 10px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(30px, 3.4vw, 46px);
         letter-spacing: 0.2px;
       }
 
+      .lead {
+        margin: 0 0 30px;
+        color: var(--muted);
+        max-width: 720px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #fff;
+        color: var(--plum);
+        border-radius: 999px;
+        padding: 8px 14px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        padding: 12px 20px;
+        font-size: 15px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+      }
+
+      .cta:focus-visible,
+      .chip:focus-visible,
+      .nav-toggle:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      details summary:focus-visible {
+        outline: 3px solid rgba(76, 38, 50, 0.35);
+        outline-offset: 2px;
+      }
+
+      .cta:hover {
+        transform: translateY(-2px);
+      }
+
+      .is-disabled {
+        opacity: 0.55;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+
+      .cta.primary {
+        background: linear-gradient(130deg, var(--accent), var(--accent-soft));
+        color: #2b1b20;
+        box-shadow: 0 16px 34px rgba(199, 154, 74, 0.32);
+      }
+
+      .cta.primary:hover {
+        background: linear-gradient(130deg, var(--accent-strong), var(--accent));
+      }
+
+      .cta.ghost {
+        background: #fff;
+        color: var(--plum);
+        border-color: var(--border);
+      }
+
+      .cta.small {
+        padding: 9px 14px;
+        font-size: 14px;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-bottom: 1px solid rgba(199, 154, 74, 0.22);
+        background: rgba(248, 236, 241, 0.95);
+        backdrop-filter: blur(14px);
+        box-shadow: 0 12px 24px rgba(100, 54, 73, 0.1);
+      }
+
+      .nav-inner {
+        width: min(var(--max), 100%);
+        margin: 0 auto;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
       .brand-logo {
-        width: 48px;
-        height: 48px;
-        border-radius: 18px;
-        background: linear-gradient(135deg, #f7e6ee, #fef6f9);
-        display: grid;
-        place-items: center;
-        box-shadow: var(--shadow-soft);
+        width: 50px;
+        height: 50px;
+        border-radius: 17px;
         overflow: hidden;
+        background: linear-gradient(130deg, #faeef3, #fff9fb);
+        box-shadow: var(--shadow-sm);
+        flex-shrink: 0;
       }
 
       .brand-logo img {
@@ -99,418 +259,614 @@
         object-fit: cover;
       }
 
-      .brand span {
+      .brand-name {
         font-family: "Cormorant Garamond", serif;
-        font-size: 24px;
+        font-size: clamp(22px, 2vw, 28px);
+        line-height: 1;
+      }
+
+      .nav-panel {
+        display: flex;
+        align-items: center;
+        gap: 20px;
       }
 
       .nav-links {
         display: flex;
-        gap: 18px;
-        font-weight: 600;
+        align-items: center;
+        gap: 16px;
+        font-size: 14px;
+        font-weight: 700;
         color: var(--muted);
+      }
+
+      .nav-links a {
+        border-radius: 999px;
+        padding: 8px 10px;
       }
 
       .nav-links a:hover {
         color: var(--plum);
+        background: rgba(255, 255, 255, 0.76);
       }
 
-      .nav-call {
-        font-weight: 600;
-        color: var(--plum);
-        background: white;
-        border: 1px solid rgba(199, 154, 74, 0.3);
-        padding: 8px 14px;
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav-phone {
+        display: inline-flex;
+        align-items: center;
+        padding: 10px 14px;
         border-radius: 999px;
+        border: 1px solid var(--border);
+        background: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        box-shadow: var(--shadow-sm);
         white-space: nowrap;
-        box-shadow: var(--shadow-soft);
+      }
+
+      .nav-toggle {
+        display: none;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: #fff;
+        color: var(--plum);
+        font-weight: 700;
+        padding: 9px 12px;
       }
 
       .hero {
-        max-width: 1200px;
+        width: min(var(--max), 100%);
         margin: 0 auto;
-        padding: 64px 24px 88px;
+        padding: clamp(32px, 7vw, 78px) 20px 54px;
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 28px;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 24px;
         align-items: center;
-        position: relative;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        inset: 35% 8% auto 8%;
-        height: 320px;
-        border-radius: 999px;
-        background: radial-gradient(circle, rgba(199, 154, 74, 0.18), transparent 70%);
-        filter: blur(30px);
-        z-index: 0;
       }
 
       .hero-copy {
-        grid-column: span 6;
-        position: relative;
-        z-index: 1;
+        grid-column: span 7;
       }
 
-      .hero-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 14px;
-        border-radius: 999px;
-        background: white;
-        color: var(--plum);
-        font-weight: 600;
-        box-shadow: var(--shadow-soft);
-      }
-
-      .hero h1 {
+      .hero-copy h1 {
         font-family: "Cormorant Garamond", serif;
-        font-size: clamp(36px, 4.6vw, 60px);
-        margin: 18px 0 16px;
-        line-height: 1.05;
+        font-size: clamp(40px, 5.3vw, 70px);
+        line-height: 1.02;
+        margin: 18px 0 18px;
       }
 
-      .hero p {
-        font-size: 17px;
+      .hero-copy p {
+        margin: 0;
         color: var(--muted);
-        margin-bottom: 24px;
+        max-width: 62ch;
       }
 
       .hero-actions {
+        margin-top: 24px;
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
       }
 
-      .cta {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 12px 20px;
-        border-radius: 999px;
-        border: 1px solid transparent;
-        font-weight: 600;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .cta.primary {
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        color: #2b1b20;
-        box-shadow: 0 18px 40px rgba(199, 154, 74, 0.35);
-      }
-
-      .cta.ghost {
-        border-color: rgba(199, 154, 74, 0.35);
-        color: var(--plum);
-        background: white;
-      }
-
-      .cta:hover {
-        transform: translateY(-2px);
-      }
-
-      .stats {
+      .hero-trust {
+        margin: 24px 0 0;
+        padding: 0;
+        list-style: none;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
-        margin-top: 28px;
       }
 
-      .stat {
-        background: white;
-        padding: 14px 16px;
-        border-radius: 16px;
-        box-shadow: var(--shadow-soft);
-        display: grid;
-        gap: 4px;
+      .hero-trust li {
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(199, 154, 74, 0.2);
+        border-radius: 14px;
+        padding: 11px 12px;
+        color: var(--muted);
+        font-size: 14px;
       }
 
-      .stat strong {
-        font-size: 18px;
+      .hero-trust strong {
+        display: block;
+        color: var(--ink);
+        margin-bottom: 2px;
       }
 
       .hero-media {
-        grid-column: span 6;
-        position: relative;
-        z-index: 1;
+        grid-column: span 5;
       }
 
       .hero-card {
-        border-radius: 28px;
-        overflow: hidden;
         position: relative;
-        box-shadow: var(--shadow);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        min-height: 500px;
+        transform-origin: center;
+        animation: heroFloat 6.2s ease-in-out infinite;
+      }
+
+      .hero-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(14, 7, 10, 0.06), rgba(14, 7, 10, 0.42));
       }
 
       .hero-card img {
         width: 100%;
-        height: 520px;
+        height: 100%;
+        min-height: 500px;
         object-fit: cover;
       }
 
-      .hero-card .overlay {
+      .hero-tag {
         position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.45) 100%);
-      }
-
-      .hero-card .tag {
-        position: absolute;
-        left: 20px;
-        bottom: 20px;
-        padding: 10px 16px;
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        z-index: 2;
+        background: rgba(255, 255, 255, 0.9);
         border-radius: 999px;
-        background: rgba(255, 255, 255, 0.92);
-        font-weight: 600;
+        padding: 10px 14px;
+        font-weight: 700;
+        text-align: center;
       }
 
-      .section {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 76px 24px;
+      .panel {
+        border-radius: var(--radius-lg);
+        background: var(--card);
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(199, 154, 74, 0.13);
       }
 
-      .section h2 {
-        font-family: "Cormorant Garamond", serif;
-        font-size: clamp(28px, 3vw, 42px);
-        margin-bottom: 12px;
-      }
-
-      .section p.lead {
-        color: var(--muted);
-        margin-bottom: 32px;
-      }
-
-      .services {
+      .booking-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: 1.05fr 1fr;
         gap: 18px;
       }
 
-      .service-card {
-        background: white;
-        border-radius: 22px;
-        padding: 20px;
-        box-shadow: var(--shadow-soft);
-        display: grid;
-        gap: 10px;
+      .booking-info,
+      .booking-embed {
+        padding: 24px;
       }
 
-      .service-card span {
-        font-weight: 600;
+      .booking-steps {
+        margin: 20px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        display: grid;
+        gap: 8px;
+      }
+
+      .booking-steps li::marker {
+        color: var(--accent-strong);
+        font-weight: 700;
+      }
+
+      .cal-inline-host {
+        width: 100%;
+        min-height: 780px;
+        border: 0;
+        border-radius: var(--radius-md);
+        background: #fff;
+        overflow: auto;
+      }
+
+      .helper {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 0 0 20px;
+      }
+
+      .chip {
+        border: 1px solid var(--border);
+        background: #fff;
         color: var(--plum);
+        border-radius: 999px;
+        padding: 9px 14px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .chip.active {
+        background: var(--plum);
+        color: #fff;
+        border-color: var(--plum);
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .service-card {
+        padding: 20px;
+      }
+
+      .service-card h3 {
+        margin: 0 0 8px;
+        font-size: 20px;
+        font-family: "Cormorant Garamond", serif;
       }
 
       .service-card p {
         margin: 0;
         color: var(--muted);
-        font-size: 14px;
       }
 
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 16px;
-        grid-auto-rows: 80px;
+      .service-meta {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 13px;
       }
 
-      .mini-gallery {
+      .price-list {
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
+        gap: 8px;
+      }
+
+      .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid rgba(199, 154, 74, 0.17);
+        border-radius: 10px;
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+
+      .price-row strong {
+        color: var(--plum);
+        white-space: nowrap;
+      }
+
+      .media-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-auto-rows: 90px;
         gap: 12px;
-        grid-auto-rows: 60px;
-        margin-top: 8px;
       }
 
-      .gallery-item {
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-        position: relative;
-      }
-
-      .mini-gallery .gallery-item {
+      .media-item {
         border-radius: 20px;
-        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(199, 154, 74, 0.1);
+        background: #f5edf0;
       }
 
-      .gallery-item img {
+      .media-item img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
 
+      .w-4 { grid-column: span 4; }
       .w-5 { grid-column: span 5; }
       .w-6 { grid-column: span 6; }
       .w-7 { grid-column: span 7; }
-      .h-2 { grid-row: span 2; }
       .h-3 { grid-row: span 3; }
       .h-4 { grid-row: span 4; }
       .h-5 { grid-row: span 5; }
 
-      .about {
+      .split-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 24px;
-        align-items: center;
-      }
-
-      .about-card {
-        background: white;
-        border-radius: 24px;
-        padding: 24px;
-        box-shadow: var(--shadow-soft);
-        display: grid;
-        gap: 12px;
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 12px;
-        border-radius: 999px;
-        font-size: 12px;
-        font-weight: 600;
-        background: rgba(199, 154, 74, 0.15);
-        color: var(--plum);
-      }
-
-      .reviews {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 18px;
-      }
-
-      .review {
-        background: white;
-        padding: 20px;
-        border-radius: 20px;
-        box-shadow: var(--shadow-soft);
-        display: grid;
-        gap: 12px;
-      }
-
-      .review strong {
-        font-size: 15px;
-      }
-
-      .review p {
-        color: var(--muted);
-        margin: 0;
-      }
-
-      .visit {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 24px;
-        align-items: center;
-      }
-
-      .visit-card {
-        background: white;
-        border-radius: 24px;
-        padding: 22px;
-        box-shadow: var(--shadow-soft);
-        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 16px;
       }
 
-      .info-row {
+      .about-card,
+      .review-card,
+      .faq-card,
+      .news-card,
+      .contact-card,
+      .form-card,
+      .instagram-card {
+        padding: 22px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(247, 228, 190, 0.45);
+        color: var(--plum);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 5px 10px;
+        letter-spacing: 0.02em;
+      }
+
+      .reviews-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .rating {
+        display: inline-flex;
+        gap: 1px;
+        color: #c78f25;
+        font-size: 15px;
+        margin-bottom: 10px;
+      }
+
+      .review-card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .review-author {
+        margin-top: 12px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .field {
         display: grid;
         gap: 6px;
       }
 
-      .info-row span {
+      .field.full {
+        grid-column: span 2;
+      }
+
+      label {
+        font-size: 13px;
         color: var(--muted);
-        font-size: 14px;
+        font-weight: 600;
       }
 
-      .map-preview {
-        border-radius: 26px;
-        overflow: hidden;
-        background: linear-gradient(130deg, #f7e6ee, #fff);
-        padding: 30px;
-        min-height: 320px;
+      input,
+      select,
+      textarea {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid rgba(199, 154, 74, 0.32);
+        background: #fff;
+        font: inherit;
+        padding: 10px 12px;
+      }
+
+      textarea {
+        min-height: 116px;
+        resize: vertical;
+      }
+
+      .form-note {
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .form-note.warn {
+        color: var(--danger);
+      }
+
+      .faq-list {
         display: grid;
-        gap: 14px;
-        box-shadow: var(--shadow);
+        gap: 10px;
       }
 
-      .map-preview h3 {
+      details {
+        background: #fff;
+        border: 1px solid rgba(199, 154, 74, 0.2);
+        border-radius: 12px;
+        padding: 4px 12px;
+      }
+
+      details[open] {
+        box-shadow: var(--shadow-sm);
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: 700;
+        padding: 12px 0;
+      }
+
+      details p {
+        margin: 0 0 14px;
+        color: var(--muted);
+      }
+
+      .instagram-wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .instagram-frame {
+        border: 0;
+        width: 100%;
+        min-height: 520px;
+        border-radius: var(--radius-md);
+        background: #fff;
+      }
+
+      .instagram-fallback {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        align-items: start;
+      }
+
+      .instagram-post {
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid rgba(199, 154, 74, 0.2);
+        background: #fff;
+        padding: 8px;
+      }
+
+      .instagram-post .instagram-media {
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .news-meta {
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 10px;
+      }
+
+      .news-card h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .news-card p {
         margin: 0;
+        color: var(--muted);
       }
 
-      .map-preview .cta-group {
-        display: flex;
-        flex-wrap: wrap;
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .contact-list {
+        display: grid;
         gap: 12px;
       }
 
-      .map-embed {
-        padding-top: 40px;
+      .contact-item {
+        padding: 12px;
+        border-radius: 12px;
+        background: rgba(247, 236, 241, 0.7);
+        border: 1px solid rgba(199, 154, 74, 0.2);
+      }
+
+      .contact-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 13px;
       }
 
       .map-frame {
-        border-radius: 28px;
+        margin-top: 14px;
+        border-radius: 18px;
         overflow: hidden;
-        box-shadow: var(--shadow);
-        background: white;
+        border: 1px solid rgba(199, 154, 74, 0.2);
       }
 
       .map-frame iframe {
         width: 100%;
-        height: 420px;
+        min-height: 320px;
         border: 0;
         display: block;
       }
 
       footer {
-        padding: 40px 24px 60px;
-        text-align: center;
+        width: min(var(--max), 100%);
+        margin: 0 auto;
+        padding: 36px 20px 72px;
         color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .footer-links {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
       }
 
       .sticky-bar {
         position: fixed;
-        bottom: calc(16px + env(safe-area-inset-bottom));
         left: 50%;
+        bottom: calc(10px + env(safe-area-inset-bottom));
         transform: translateX(-50%);
-        width: min(520px, calc(100% - 24px));
-        background: white;
+        width: min(560px, calc(100% - 16px));
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(199, 154, 74, 0.22);
         border-radius: 999px;
-        box-shadow: 0 20px 50px rgba(48, 20, 32, 0.25);
+        box-shadow: 0 22px 40px rgba(54, 22, 34, 0.24);
         display: none;
-        justify-content: space-between;
-        padding: 10px;
-        z-index: 30;
+        padding: 8px;
+        z-index: 60;
       }
 
       .sticky-bar a {
         flex: 1;
         text-align: center;
-        padding: 10px 12px;
+        padding: 10px 8px;
         border-radius: 999px;
-        font-weight: 600;
-        color: var(--plum);
+        font-size: 13px;
+        font-weight: 700;
       }
 
       .sticky-bar a.primary {
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        background: linear-gradient(130deg, var(--accent), var(--accent-soft));
         color: #2b1b20;
       }
 
-      @media (max-width: 980px) {
+      @keyframes heroFloat {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-7px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @media (max-width: 1080px) {
         .nav-links {
-          display: none;
+          gap: 10px;
         }
 
         .hero {
           grid-template-columns: 1fr;
+          gap: 18px;
         }
 
         .hero-copy,
@@ -518,32 +874,97 @@
           grid-column: span 1;
         }
 
-        .hero-card img {
-          height: 420px;
-        }
-
         .hero-media {
-          order: -1;
+          order: 2;
         }
 
-        .gallery-grid {
-          grid-template-columns: repeat(2, 1fr);
-          grid-auto-rows: 160px;
+        .hero-card,
+        .hero-card img {
+          min-height: 380px;
         }
 
-        .gallery-item {
+        .services-grid,
+        .reviews-grid,
+        .news-grid,
+        .split-grid,
+        .contact-grid,
+        .booking-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .media-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: 170px;
+        }
+
+        .media-item {
           grid-column: span 1 !important;
           grid-row: span 1 !important;
         }
+      }
 
-        .mini-gallery {
-          grid-template-columns: repeat(2, 1fr);
-          grid-auto-rows: 140px;
+      @media (max-width: 900px) {
+        .nav-toggle {
+          display: inline-flex;
+          align-items: center;
         }
 
-        .mini-gallery .gallery-item {
-          grid-column: span 1 !important;
-          grid-row: span 1 !important;
+        .nav-panel {
+          position: fixed;
+          top: 78px;
+          left: 10px;
+          right: 10px;
+          border-radius: 18px;
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: var(--shadow-md);
+          border: 1px solid rgba(199, 154, 74, 0.24);
+          padding: 14px;
+          display: none;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 12px;
+        }
+
+        .nav-open .nav-panel {
+          display: flex;
+        }
+
+        .nav-links {
+          display: grid;
+          gap: 6px;
+        }
+
+        .nav-actions {
+          display: grid;
+          gap: 8px;
+        }
+
+        .nav-phone,
+        .nav-actions .cta {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .hero-trust {
+          grid-template-columns: 1fr;
+        }
+
+        .services-grid,
+        .reviews-grid,
+        .news-grid,
+        .split-grid,
+        .contact-grid,
+        .booking-grid,
+        .instagram-fallback {
+          grid-template-columns: 1fr;
+        }
+
+        .field.full {
+          grid-column: span 1;
+        }
+
+        .form-grid {
+          grid-template-columns: 1fr;
         }
 
         .sticky-bar {
@@ -551,326 +972,1069 @@
         }
 
         footer {
-          padding-bottom: 140px;
+          padding-bottom: 128px;
         }
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 620px) {
+        .section {
+          padding: 52px 16px;
+        }
+
         .nav-inner {
           padding: 12px 16px;
         }
 
-        .brand span {
-          font-size: 20px;
+        .brand-logo {
+          width: 44px;
+          height: 44px;
+          border-radius: 14px;
         }
 
-        .nav-call {
-          font-size: 12px;
-          padding: 6px 10px;
+        .brand-name {
+          font-size: 22px;
         }
 
         .hero {
-          padding: 36px 18px 64px;
-          gap: 20px;
+          padding: 28px 16px 42px;
         }
 
-        .hero-eyebrow {
-          font-size: 12px;
-        }
-
-        .hero h1 {
-          font-size: 30px;
-        }
-
-        .hero p {
-          font-size: 15px;
+        .hero-copy h1 {
+          font-size: clamp(34px, 13vw, 46px);
         }
 
         .hero-actions {
-          flex-direction: column;
+          display: grid;
+          grid-template-columns: 1fr;
         }
 
         .hero-actions .cta {
           width: 100%;
-          font-size: 15px;
         }
 
-        .hero-actions {
-          display: none;
-        }
-
+        .hero-card,
         .hero-card img {
-          height: 320px;
+          min-height: 300px;
         }
 
-        .stats {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 10px;
-        }
-
-        .stat:nth-child(3) {
-          grid-column: span 2;
-        }
-
-        .section {
-          padding: 60px 18px;
-        }
-
-        .services {
-          grid-template-columns: 1fr;
-        }
-
-        .section h2 {
-          font-size: 26px;
-        }
-
-        .map-preview {
-          padding: 22px;
-          min-height: 0;
+        .booking-info,
+        .booking-embed,
+        .about-card,
+        .review-card,
+        .faq-card,
+        .news-card,
+        .contact-card,
+        .form-card,
+        .instagram-card,
+        .service-card {
+          padding: 18px;
         }
 
         .map-frame iframe {
-          height: 300px;
+          min-height: 270px;
         }
 
-        .map-preview .cta-group {
-          display: none;
+        .cal-inline-host {
+          min-height: 620px;
         }
-
-        .sticky-bar {
-          width: calc(100% - 20px);
-          padding: 8px;
-        }
-
-        .sticky-bar a {
-          font-size: 14px;
-          padding: 10px 8px;
-        }
-
-      }
-
-      @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-        100% { transform: translateY(0); }
-      }
-
-      .float {
-        animation: float 5s ease-in-out infinite;
       }
     </style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BeautySalon",
+        "name": "Betül Böçkün Beauty",
+        "image": "https://xm238.github.io/Betul-Bockun-Beauty/betul-bockun-logo.png",
+        "url": "https://xm238.github.io/Betul-Bockun-Beauty/",
+        "telephone": "+905521548052",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Cumhuriyet, Eğitim Vadisi Blv. No:3",
+          "addressLocality": "Beylikdüzü",
+          "addressRegion": "İstanbul",
+          "postalCode": "34520",
+          "addressCountry": "TR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.0092,
+          "longitude": 28.6402
+        },
+        "priceRange": "₺₺",
+        "openingHours": "Mo-Su 10:00-20:00",
+        "sameAs": ["https://www.instagram.com/betulbockunbeauty/"]
+      }
+    </script>
   </head>
+
   <body>
+    <a class="skip-link" href="#main">İçeriğe geç</a>
+
     <div class="page">
-      <nav class="nav">
-        <div class="nav-inner">
-          <div class="brand">
-            <div class="brand-logo">
-              <img src="betul-bockun-logo.png" alt="Betül Böçkün Beauty logosu" />
-            </div>
-            <span>Betül Böçkün Beauty</span>
-          </div>
-          <div class="nav-links">
-            <a href="#overview">Genel Bakış</a>
-            <a href="#services">Hizmetler</a>
-            <a href="#gallery">Galeri</a>
-            <a href="#reviews">Yorumlar</a>
-            <a href="#visit">İletişim</a>
-          </div>
-          <a class="nav-call" href="tel:+905521548052">Ara: 0552 154 80 52</a>
-        </div>
-      </nav>
+      <header class="site-header" id="top">
+        <nav class="nav-inner" aria-label="Ana menü">
+          <a class="brand" href="#top" aria-label="Betül Böçkün Beauty ana sayfa">
+            <span class="brand-logo">
+              <img
+                src="betul-bockun-logo.png"
+                alt="Betül Böçkün Beauty logosu"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high" />
+            </span>
+            <span class="brand-name">Betül Böçkün Beauty</span>
+          </a>
 
-      <section class="hero" id="overview">
-        <div class="hero-copy">
-          <div class="hero-eyebrow">Güzellik Salonu · Beylikdüzü</div>
-          <h1>Bakımlı hissetmenin en zarif hali.</h1>
-          <p>
-            Betül Böçkün Beauty, hijyenik ortamı ve özenli uygulamalarıyla kendinizi her ziyaretinizde özel hissettiren
-            bir bakım deneyimi sunar. Protez tırnak, manikür & pedikür ve ipek kirpik hizmetlerinde titizlikle çalışıyoruz.
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            type="button"
+            aria-controls="mainMenu"
+            aria-expanded="false">
+            Menü
+          </button>
+
+          <div class="nav-panel" id="mainMenu">
+            <div class="nav-links">
+              <a href="#overview">Genel Bakış</a>
+              <a href="#booking">Randevu</a>
+              <a href="#services">Hizmetler</a>
+              <a href="#gallery">Galeri</a>
+              <a href="#reviews">Yorumlar</a>
+              <a href="#faq">SSS</a>
+              <a href="#contact">İletişim</a>
+            </div>
+
+            <div class="nav-actions">
+              <a class="nav-phone" href="tel:+905521548052" aria-label="Betül Böçkün Beauty telefonla ara">
+                Ara: 0552 154 80 52
+              </a>
+              <a class="cta primary small" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">
+                Randevu Al
+              </a>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main id="main">
+        <section class="hero" id="overview">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Güzellik Salonu · Beylikdüzü</span>
+            <h1>Bakımlı hissetmenin en zarif hali.</h1>
+            <p>
+              Hijyenik ortam, profesyonel ekip ve kişiye özel bakım planı ile protez tırnak,
+              manikür &amp; pedikür, ipek kirpik ve daha fazlasını tek bir çatı altında sunuyoruz.
+              Üstelik online randevu ile beklemeden plan yapabilirsiniz.
+            </p>
+
+            <div class="hero-actions">
+              <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Online Randevu Al</a>
+              <a class="cta ghost" href="tel:+905521548052">Telefonla Ara</a>
+              <a class="cta ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Yol Tarifi</a>
+            </div>
+
+            <ul class="hero-trust" aria-label="Öne çıkan bilgiler">
+              <li>
+                <strong>4.1 ★</strong>
+                40+ Google yorumu
+              </li>
+              <li>
+                <strong>Her Gün Açık</strong>
+                10:00 - 20:00
+              </li>
+              <li>
+                <strong>Erçev Sitesi</strong>
+                Eğitim Vadisi Blv. No:3
+              </li>
+            </ul>
+          </div>
+
+          <div class="hero-media reveal">
+            <figure class="hero-card">
+              <img
+                src="nails-red-hearts.png"
+                alt="Kalpli nail art uygulaması"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high" />
+              <figcaption class="hero-tag">Nail Art &amp; Protez Tırnak</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section" id="booking">
+          <span class="eyebrow reveal">Adım 1 · Randevu Sistemi</span>
+          <h2 class="reveal">Online Randevu (Cal.com)</h2>
+          <p class="lead reveal">
+            Demo için ücretsiz Cal.com planıyla randevu oluşturma akışını entegre ettim.
+            Takvim görünümü ve butonlar tek yerden güncellenebilir.
           </p>
-          <div class="hero-actions">
-            <a class="cta primary" href="tel:+905521548052">Hemen Ara</a>
-            <a class="cta ghost" href="https://www.google.com/maps/search/?api=1&query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Yol Tarifi Al</a>
-          </div>
-          <div class="stats">
-            <div class="stat">
-              <strong>4.1 ★</strong>
-              <span>40 yorum</span>
-            </div>
-            <div class="stat">
-              <strong>Açık</strong>
-              <span>Kapanış: 20:00</span>
-            </div>
-            <div class="stat">
-              <strong>Erçev Sitesi</strong>
-              <span>Cumhuriyet, Eğitim Vadisi Blv. No:3</span>
-            </div>
-          </div>
-        </div>
-        <div class="hero-media">
-          <div class="hero-card float">
-            <img src="nails-red-hearts.png" alt="Kalpli nail art uygulaması" />
-            <div class="overlay"></div>
-            <div class="tag">Nail art & protez tırnak</div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section" id="services">
-        <h2>Hizmetler</h2>
-        <p class="lead">Her detayda özen, her uygulamada hijyen. Size en uygun bakımı birlikte seçiyoruz.</p>
-        <div class="services">
-          <div class="service-card">
-            <span>Protez Tırnak</span>
-            <p>Dayanıklı, doğal görünümlü ve kişiye özel tasarım.</p>
-          </div>
-          <div class="service-card">
-            <span>Manikür & Pedikür</span>
-            <p>Hijyenik bakım, rahatlatıcı dokunuşlar.</p>
-          </div>
-          <div class="service-card">
-            <span>İpek Kirpik</span>
-            <p>Doğal hacim, net bakışlar ve uzun süre kalıcılık.</p>
-          </div>
-          <div class="service-card">
-            <span>Kaş & Bıyık</span>
-            <p>Yüz şeklinize uygun tasarım ve hassas uygulama.</p>
-          </div>
-          <div class="service-card">
-            <span>Kalıcı Oje</span>
-            <p>Parlaklık ve dayanıklılığı uzun süre korur.</p>
-          </div>
-          <div class="service-card">
-            <span>Bakım Ritüelleri</span>
-            <p>Cilt, el ve ayak bakımıyla tam yenilenme.</p>
-          </div>
-        </div>
-      </section>
+          <div class="booking-grid">
+            <article class="panel booking-info reveal">
+              <span class="badge">Ücretsiz araçla kurulum</span>
+              <h3>Randevu akışı</h3>
+              <p class="lead" style="margin-bottom: 0">
+                Müşteri hizmetini seçer, uygun saati görür ve randevusunu tamamlar. Sonrasında
+                otomatik e-posta/SMS bildirimleri Cal.com içinden yönetilebilir.
+              </p>
 
-      <section class="section" id="gallery">
-        <h2>Galeri</h2>
-        <p class="lead">Salon atmosferi ve özenle hazırlanmış uygulamalardan kareler.</p>
-        <div class="gallery-grid">
-          <div class="gallery-item w-7 h-5">
-            <img src="https://images.pexels.com/photos/3736520/pexels-photo-3736520.jpeg?cs=srgb&dl=pexels-polina-tankilevitch-3736520.jpg&fm=jpg" alt="Modern güzellik salonu iç mekanı" />
-          </div>
-          <div class="gallery-item w-5 h-5">
-            <img src="https://images.pexels.com/photos/4677852/pexels-photo-4677852.jpeg?cs=srgb&dl=pexels-leeloothefirst-4677852.jpg&fm=jpg" alt="Manikür sırasında yakın plan bakım" />
-          </div>
-          <div class="gallery-item w-6 h-4">
-            <img src="https://images.pexels.com/photos/8481628/pexels-photo-8481628.jpeg?cs=srgb&dl=pexels-19x14-8481628.jpg&fm=jpg" alt="Tırnak şekillendirme ve bakım" />
-          </div>
-          <div class="gallery-item w-6 h-4">
-            <img src="https://images.pexels.com/photos/6135684/pexels-photo-6135684.jpeg?cs=srgb&dl=pexels-gabrielpuyen-6135684.jpg&fm=jpg" alt="Salon ortamında manikür uygulaması" />
-          </div>
-        </div>
-      </section>
+              <ol class="booking-steps">
+                <li>Hizmet süresi ve takvim uygunlukları Cal.com panelinden ayarlanır.</li>
+                <li>Bu sayfadaki tüm "Randevu Al" butonları tek linkten otomatik güncellenir.</li>
+                <li>Telefon araması ve yol tarifi seçenekleri her zaman alternatif olarak kalır.</li>
+              </ol>
 
-      <section class="section" id="about">
-        <div class="about">
-          <div class="about-card">
-            <span class="pill">Hijyen & Özen</span>
-            <h3>Şeffaf, güvenli ve sakin bir bakım alanı.</h3>
-            <p>
-              Tüm ekipmanlar düzenli olarak steril edilir, her uygulama öncesi alan titizlikle hazırlanır. Amacımız sadece
-              güzel görünmeniz değil, aynı zamanda kendinizi iyi hissetmeniz.
-            </p>
-          </div>
-          <div class="about-card">
-            <span class="pill">Nazik Dokunuş</span>
-            <h3>Her uygulama size özel planlanır.</h3>
-            <p>
-              İster sade ve zarif tırnaklar, ister iddialı nail art… Size en uygun seçimi birlikte yapıyor, sonucu özenle
-              tamamlıyoruz.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="reviews">
-        <h2>Misafir Yorumları</h2>
-        <p class="lead">Salonumuzdan memnun ayrılan misafirlerimizin yorumlarından öne çıkanlar.</p>
-        <div class="reviews">
-          <div class="review">
-            <strong>“%100 tavsiye edebilirim, gönül rahatlığıyla gidilebilir.”</strong>
-            <p>Merve Hanım güler yüzlü ve özverili. İşini ehliyle yapıyor, teşekkür ediyorum. — Sema Koyuncu</p>
-          </div>
-          <div class="review">
-            <strong>“Protez tırnak ve ipek kirpik yaptırdım, çok memnun kaldım.”</strong>
-            <p>İşlemi Mahinur Hanım yaptı ve çok güzel oldu. Ellerinize sağlık. — Nurgozel Rozyyeva</p>
-          </div>
-          <div class="review">
-            <strong>“Salon hem kaliteli hem hijyenik.”</strong>
-            <p>Merve Hanım çok pozitif, işinde de çok başarılı. Kendimden çok memnunum. — Gizem Türkmen</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="visit">
-        <h2>Bizi Ziyaret Edin</h2>
-        <p class="lead">Cumhuriyet, Eğitim Vadisi Blv. No:3, 34520 Beylikdüzü/İstanbul</p>
-        <div class="visit">
-          <div class="visit-card">
-            <div class="info-row">
-              <strong>Adres</strong>
-              <span>Cumhuriyet, Eğitim Vadisi Blv. No:3, 34520 Beylikdüzü/İstanbul</span>
-            </div>
-            <div class="info-row">
-              <strong>Konum</strong>
-              <span>Erçev Sitesi · Plus Code: XJRX+Q5</span>
-            </div>
-            <div class="info-row">
-              <strong>Telefon</strong>
-              <span>0552 154 80 52</span>
-            </div>
-            <div class="info-row">
-              <strong>Saatler</strong>
-              <span>Açık · Kapanış 20:00</span>
-            </div>
-          </div>
-          <div class="map-preview">
-            <h3>Hızlıca ulaşın</h3>
-            <p>Randevu ve bilgi için arayın veya haritada konumumuzu görüntüleyin.</p>
-            <div class="cta-group">
-              <a class="cta primary" href="https://www.google.com/maps/search/?api=1&query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Haritada Aç</a>
-              <a class="cta ghost" href="tel:+905521548052">Hemen Ara</a>
-            </div>
-            <div class="mini-gallery">
-              <div class="gallery-item w-6 h-4">
-                <img src="salon-interior-wall.png" alt="Salon içi atmosfer" />
+              <div class="hero-actions" style="margin-top: 18px">
+                <a class="cta primary" data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Cal.com'da Randevu Aç</a>
+                <a class="cta ghost" href="tel:+905521548052">Telefonla Randevu</a>
               </div>
-              <div class="gallery-item w-6 h-4">
-                <img src="nails-milky-white.png" alt="Süt beyaz tırnak" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </article>
 
-      <section class="section map-embed" id="map">
-        <h2>Harita</h2>
-        <p class="lead">Konumumuzu haritada görüntüleyin.</p>
-        <div class="map-frame">
-          <iframe
-            title="Betül Böçkün Beauty harita"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Cumhuriyet%20E%C4%9Fitim%20Vadisi%20Blv%20No%3A3%20Beylikd%C3%BCz%C3%BC&output=embed">
-          </iframe>
-        </div>
-      </section>
+            <article class="panel booking-embed reveal">
+              <h3 style="margin-top: 0">Takvim önizleme</h3>
+              <div
+                id="my-cal-inline-betul-bockun"
+                class="cal-inline-host"
+                role="region"
+                aria-label="Cal.com randevu takvim önizlemesi">
+              </div>
+              <p class="helper">
+                Takvim görünmüyorsa
+                <a data-config-link="calBookingUrl" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer"><strong>yeni sekmede açın</strong></a>.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="services">
+          <span class="eyebrow reveal">Adım 2 · Dinamik Hizmet/Fiyat</span>
+          <h2 class="reveal">Hizmetler ve Fiyat Aralığı</h2>
+          <p class="lead reveal">
+            Fiyatları statik metin yerine düzenlenebilir bir veri yapısından oluşturuyoruz.
+            Yeni hizmet eklemek veya fiyat güncellemek için sadece tek bir listede değişiklik yeterli.
+          </p>
+          <div class="chip-row reveal" id="serviceFilters" aria-label="Hizmet kategorileri"></div>
+          <div class="services-grid" id="servicesGrid" aria-live="polite"></div>
+        </section>
+
+        <section class="section" id="gallery">
+          <span class="eyebrow reveal">Görsel Deneyim</span>
+          <h2 class="reveal">Galeri</h2>
+          <p class="lead reveal">Gerçek uygulama sonuçları ve salon atmosferinden öne çıkan kareler.</p>
+          <div class="media-grid">
+            <figure class="media-item w-7 h-5 reveal">
+              <img
+                src="salon-interior-wall.png"
+                alt="Salon iç duvar tasarımı"
+                loading="lazy"
+                decoding="async" />
+            </figure>
+            <figure class="media-item w-5 h-5 reveal">
+              <img
+                src="nails-milky-white.png"
+                alt="Süt beyaz tırnak modeli"
+                loading="lazy"
+                decoding="async" />
+            </figure>
+            <figure class="media-item w-6 h-4 reveal">
+              <img
+                src="nails-red-hearts.png"
+                alt="Kalpli nail art tırnak"
+                loading="lazy"
+                decoding="async" />
+            </figure>
+            <figure class="media-item w-6 h-4 reveal">
+              <img
+                src="https://images.pexels.com/photos/3993444/pexels-photo-3993444.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+                alt="Manikür çalışma masası"
+                loading="lazy"
+                decoding="async" />
+            </figure>
+          </div>
+        </section>
+
+        <section class="section" id="about">
+          <span class="eyebrow reveal">Kalite ve Güven</span>
+          <h2 class="reveal">Neden Betül Böçkün Beauty?</h2>
+          <p class="lead reveal">Düzenli sterilizasyon, sakin bir salon deneyimi ve kişiye özel uygulama yaklaşımı.</p>
+
+          <div class="split-grid">
+            <article class="panel about-card reveal">
+              <span class="badge">Hijyen Standardı</span>
+              <h3>Her işlemde tek kullanımlık sarf ve steril ekipman.</h3>
+              <p class="lead" style="margin-bottom: 0">
+                Uygulama öncesi alan hazırlığı, işlem sonrası temizleme protokolü ve düzenli ekipman kontrolü ile
+                güvenli bir bakım süreci sağlanır.
+              </p>
+            </article>
+
+            <article class="panel about-card reveal">
+              <span class="badge">Kişiye Özel Stil</span>
+              <h3>Doğal görünümden iddialı nail art'a kadar kişiselleştirilmiş sonuç.</h3>
+              <p class="lead" style="margin-bottom: 0">
+                El yapısı, kullanım alışkanlığı ve istenen stile göre işlem planı belirlenir. Bu sayede hem estetik
+                hem de uzun ömürlü sonuç elde edilir.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="reviews">
+          <span class="eyebrow reveal">Adım 3 · Yorum Yönetimi</span>
+          <h2 class="reveal">Misafir Yorumları</h2>
+          <p class="lead reveal">
+            Hazır yorum kartlarının yanında yeni yorum toplamak için form alanı ekledim. Google yorumu bağlantısı da
+            doğrudan aksiyona hazır.
+          </p>
+
+          <div class="reviews-toolbar reveal">
+            <a
+              class="cta ghost small"
+              id="googleReviewLink"
+              data-config-link="googleReviewUrl"
+              href="#"
+              target="_blank"
+              rel="noreferrer">
+              Google'da Yorum Bırak
+            </a>
+            <a class="cta ghost small" href="#reviewForm">Siteden Yorum Gönder</a>
+          </div>
+          <p class="helper reveal">Google yorum bağlantısı işletme hesabı erişimi geldikten sonra aktif edilecek.</p>
+
+          <div class="reviews-grid">
+            <article class="panel review-card reveal">
+              <div class="rating" aria-label="5 üzerinden 5 puan">★★★★★</div>
+              <p>"%100 tavsiye edebilirim, gönül rahatlığıyla gidilebilir."</p>
+              <div class="review-author">Sema Koyuncu · Google yorum</div>
+            </article>
+
+            <article class="panel review-card reveal">
+              <div class="rating" aria-label="5 üzerinden 5 puan">★★★★★</div>
+              <p>"Protez tırnak ve ipek kirpik yaptırdım, çok memnun kaldım."</p>
+              <div class="review-author">Nurgozel Rozyyeva · Google yorum</div>
+            </article>
+
+            <article class="panel review-card reveal">
+              <div class="rating" aria-label="5 üzerinden 5 puan">★★★★★</div>
+              <p>"Salon hem kaliteli hem hijyenik. Pozitif ve profesyonel bir ekip."</p>
+              <div class="review-author">Gizem Türkmen · Google yorum</div>
+            </article>
+          </div>
+
+          <article class="panel form-card reveal" id="reviewForm" style="margin-top: 16px">
+            <h3 style="margin-top: 0">Yeni yorum alımı (demo)</h3>
+            <form id="reviewIntakeForm" method="post">
+              <input type="hidden" name="form_type" value="review" />
+              <div class="form-grid">
+                <div class="field">
+                  <label for="reviewName">Ad Soyad</label>
+                  <input id="reviewName" name="name" type="text" required />
+                </div>
+                <div class="field">
+                  <label for="reviewRating">Puan</label>
+                  <select id="reviewRating" name="rating" required>
+                    <option value="">Seçiniz</option>
+                    <option value="5">5</option>
+                    <option value="4">4</option>
+                    <option value="3">3</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="reviewMessage">Yorum</label>
+                  <textarea id="reviewMessage" name="message" required></textarea>
+                </div>
+              </div>
+              <div style="margin-top: 12px">
+                <button class="cta primary" type="submit">Yorumu Gönder</button>
+              </div>
+              <p class="form-note" id="reviewFormNote">
+                Bu form ücretsiz Formspree endpoint'i bağlandığında çalışır.
+              </p>
+            </form>
+          </article>
+        </section>
+
+        <section class="section" id="instagram">
+          <span class="eyebrow reveal">Adım 4 · Instagram Entegrasyonu</span>
+          <h2 class="reveal">Instagram Akışı</h2>
+          <p class="lead reveal">
+            Canlı akış için ücretsiz bir widget URL'si veya profil linki ekleyebiliriz. Şimdilik hızlı demo için görsel
+            önizleme ve profil yönlendirmesi aktif.
+          </p>
+
+          <article class="panel instagram-card reveal">
+            <div class="instagram-wrap" id="instagramWrap">
+              <div class="instagram-fallback" id="instagramFallback" aria-live="polite"></div>
+            </div>
+
+            <div class="hero-actions" style="margin-top: 16px">
+              <a
+                class="cta ghost"
+                id="instagramProfileLink"
+                data-config-link="instagramProfileUrl"
+                href="#"
+                target="_blank"
+                rel="noreferrer">
+                Instagram Profilini Aç
+              </a>
+            </div>
+            <p class="helper" id="instagramHint">
+              Paylaşımlar doğrudan Instagram üzerinden gömülü olarak yükleniyor.
+            </p>
+          </article>
+        </section>
+
+        <section class="section" id="faq">
+          <span class="eyebrow reveal">Adım 5 · Sık Sorulan Sorular</span>
+          <h2 class="reveal">Sık Sorulan Sorular</h2>
+          <p class="lead reveal">Randevu öncesi ve sonrası en çok gelen soruların hızlı cevapları.</p>
+
+          <article class="faq-list reveal">
+            <details>
+              <summary>Randevu iptal veya değişiklik nasıl yapılır?</summary>
+              <p>
+                Cal.com üzerinden oluşturulan randevular e-posta onay linkinden değiştirilebilir veya iptal edilebilir.
+                Telefonla oluşturulan randevular için bizi doğrudan arayabilirsiniz.
+              </p>
+            </details>
+
+            <details>
+              <summary>Protez tırnak işlemi ne kadar sürer?</summary>
+              <p>
+                Tasarıma bağlı olarak ortalama 90-120 dakika sürer. İlk uygulamalarda planlama için en az 2 saat
+                ayırmanızı öneririz.
+              </p>
+            </details>
+
+            <details>
+              <summary>İpek kirpik sonrası nelere dikkat etmeliyim?</summary>
+              <p>
+                İlk 24 saat su ve buhardan uzak tutmanız, yağ bazlı temizleyici kullanmamanız önerilir. Düzenli bakım ile
+                kullanım süresi uzar.
+              </p>
+            </details>
+
+            <details>
+              <summary>Ödeme yöntemleri neler?</summary>
+              <p>
+                Nakit ve banka havalesi seçenekleri mevcuttur. POS/QR ödeme için işletme tercihine göre ayrıca güncelleme
+                yapılabilir.
+              </p>
+            </details>
+          </article>
+        </section>
+
+        <section class="section" id="news">
+          <span class="eyebrow reveal">Adım 6 · Blog &amp; Duyuru</span>
+          <h2 class="reveal">Blog ve Duyurular</h2>
+          <p class="lead reveal">
+            SEO ve müşteri güveni için güncellenebilir mini içerik alanı. İstersen bunu gerçek blog altyapısına da taşıyabiliriz.
+          </p>
+
+          <div class="news-grid">
+            <article class="panel news-card reveal">
+              <div class="news-meta">Bakım Tüyosu · 15 Ocak 2026</div>
+              <h3>Protez tırnağın ömrünü uzatmanın 5 yolu</h3>
+              <p>
+                Doğru temizlik rutini, koruyucu eldiven kullanımı ve düzenli bakım randevusu ile protez tırnağın formunu
+                daha uzun süre koruyabilirsiniz.
+              </p>
+            </article>
+
+            <article class="panel news-card reveal">
+              <div class="news-meta">Salon Duyurusu · 28 Ocak 2026</div>
+              <h3>Yeni ipek kirpik setleri hizmete alındı</h3>
+              <p>
+                Daha hafif ve doğal görünüm sunan yeni kirpik setleriyle uygulama seçeneklerini genişlettik.
+                Randevu almadan önce danışabilirsiniz.
+              </p>
+            </article>
+
+            <article class="panel news-card reveal">
+              <div class="news-meta">Kampanya · 6 Şubat 2026</div>
+              <h3>Hafta içi gündüz saatlerine özel paket fiyatlar</h3>
+              <p>
+                Manikür + kalıcı oje kombinasyonlarında hafta içi gündüz saatlerinde özel paket planları uygulanır.
+                Detayları randevu adımında görebilirsiniz.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="contact">
+          <span class="eyebrow reveal">Adım 7 · İletişim Formu</span>
+          <h2 class="reveal">Bize Ulaşın</h2>
+          <p class="lead reveal">
+            Genel soru, fiyat talebi veya özel istekler için formu doldurun. Acil durumlar için telefon hattı her zaman
+            daha hızlıdır.
+          </p>
+
+          <div class="contact-grid">
+            <article class="panel contact-card reveal">
+              <div class="contact-list">
+                <div class="contact-item">
+                  <strong>Adres</strong>
+                  <span>Cumhuriyet, Eğitim Vadisi Blv. No:3, 34520 Beylikdüzü/İstanbul</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Telefon</strong>
+                  <span>0552 154 80 52</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Çalışma Saatleri</strong>
+                  <span>Her gün 10:00 - 20:00</span>
+                </div>
+                <div class="contact-item">
+                  <strong>Konum</strong>
+                  <span>Erçev Sitesi · Plus Code: XJRX+Q5</span>
+                </div>
+              </div>
+
+              <div class="hero-actions" style="margin-top: 14px">
+                <a class="cta primary" href="https://www.google.com/maps/search/?api=1&amp;query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Haritada Aç</a>
+                <a class="cta ghost" href="tel:+905521548052">Hemen Ara</a>
+              </div>
+
+              <div class="map-frame">
+                <iframe
+                  title="Betül Böçkün Beauty harita"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps?q=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Cumhuriyet%20E%C4%9Fitim%20Vadisi%20Blv%20No%3A3%20Beylikd%C3%BCz%C3%BC&amp;output=embed">
+                </iframe>
+              </div>
+            </article>
+
+            <article class="panel form-card reveal">
+              <h3 style="margin-top: 0">İletişim Formu</h3>
+              <form id="contactForm" method="post">
+                <input type="hidden" name="form_type" value="contact" />
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="name">Ad Soyad</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required />
+                  </div>
+
+                  <div class="field">
+                    <label for="phone">Telefon</label>
+                    <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+                  </div>
+
+                  <div class="field">
+                    <label for="topic">Konu</label>
+                    <select id="topic" name="topic" required>
+                      <option value="">Seçiniz</option>
+                      <option value="price">Fiyat bilgisi</option>
+                      <option value="booking">Randevu desteği</option>
+                      <option value="service">Hizmet detayı</option>
+                      <option value="other">Diğer</option>
+                    </select>
+                  </div>
+
+                  <div class="field">
+                    <label for="preferredDate">Tercih edilen tarih (opsiyonel)</label>
+                    <input id="preferredDate" name="preferred_date" type="date" />
+                  </div>
+
+                  <div class="field full">
+                    <label for="message">Mesaj</label>
+                    <textarea id="message" name="message" required></textarea>
+                  </div>
+                </div>
+
+                <div style="margin-top: 12px">
+                  <button class="cta primary" type="submit">Mesajı Gönder</button>
+                </div>
+                <p class="form-note" id="contactFormNote">
+                  Bu form ücretsiz Formspree endpoint'i bağlandığında aktif olur.
+                </p>
+              </form>
+            </article>
+          </div>
+        </section>
+      </main>
 
       <footer>
-        <p>Betül Böçkün Beauty · Beylikdüzü/İstanbul</p>
-        <p>Bakımlı hissetmek için doğru adres.</p>
+        <span>© <span id="year"></span> Betül Böçkün Beauty · Beylikdüzü/İstanbul</span>
+        <span class="footer-links">
+          <a href="#services">Hizmetler</a>
+          <a href="#booking">Randevu</a>
+          <a href="#contact">İletişim</a>
+        </span>
       </footer>
 
-      <div class="sticky-bar">
+      <div class="sticky-bar" aria-label="Mobil hızlı işlemler">
         <a href="tel:+905521548052">Ara</a>
-        <a class="primary" href="https://www.google.com/maps/search/?api=1&query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer">Yol Tarifi</a>
-        <a href="#reviews">Yorumlar</a>
+        <a data-config-link="calBookingUrl" class="primary" href="https://cal.com/adil-mucahid-lbrak3/betul-bockun" target="_blank" rel="noreferrer">Randevu</a>
+        <a href="#contact">İletişim</a>
       </div>
     </div>
+
+    <script>
+      const SITE_CONFIG = {
+        calBookingUrl: "https://cal.com/adil-mucahid-lbrak3/betul-bockun",
+        calLinkPath: "adil-mucahid-lbrak3/betul-bockun",
+        formEndpoint: "https://formspree.io/f/xvzbkyko",
+        instagramProfileUrl: "https://www.instagram.com/betulbockunbeauty/",
+        instagramWidgetUrl: "",
+        googleReviewUrl: "",
+        analyticsId: ""
+      };
+
+      const SERVICE_CATEGORIES = [
+        { id: "all", label: "Tümü" },
+        { id: "nails", label: "Tırnak" },
+        { id: "lashes", label: "Kirpik" },
+        { id: "care", label: "Bakım" }
+      ];
+
+      const SERVICE_DATA = [
+        {
+          id: "prosthetic-nails",
+          category: "nails",
+          title: "Protez Tırnak",
+          description: "Kişiye özel form, dayanıklı uygulama ve tasarım seçenekleri.",
+          duration: "90-120 dk",
+          from: "₺900",
+          prices: [
+            { label: "Yeni set", value: "₺900+" },
+            { label: "Bakım", value: "₺600+" },
+            { label: "Nail art", value: "₺100+" }
+          ]
+        },
+        {
+          id: "manicure-pedicure",
+          category: "care",
+          title: "Manikür & Pedikür",
+          description: "Hijyen odaklı klasik veya spa destekli bakım seçenekleri.",
+          duration: "45-75 dk",
+          from: "₺350",
+          prices: [
+            { label: "Klasik manikür", value: "₺350" },
+            { label: "Klasik pedikür", value: "₺400" },
+            { label: "Spa paket", value: "₺650" }
+          ]
+        },
+        {
+          id: "lash-extension",
+          category: "lashes",
+          title: "İpek Kirpik",
+          description: "Doğal, yoğun veya volume stiller ile uzun süre kalıcılık.",
+          duration: "70-100 dk",
+          from: "₺800",
+          prices: [
+            { label: "Yeni set", value: "₺800+" },
+            { label: "Dolgu", value: "₺500+" },
+            { label: "Çıkarma", value: "₺250" }
+          ]
+        },
+        {
+          id: "brows",
+          category: "care",
+          title: "Kaş & Bıyık",
+          description: "Yüz hatlarına uygun ölçü ve hassas uygulama.",
+          duration: "20-35 dk",
+          from: "₺150",
+          prices: [
+            { label: "Kaş alımı", value: "₺150" },
+            { label: "Bıyık", value: "₺100" },
+            { label: "Kaş + bıyık", value: "₺220" }
+          ]
+        },
+        {
+          id: "gel-polish",
+          category: "nails",
+          title: "Kalıcı Oje",
+          description: "Yüksek parlaklık ve uzun süreli dayanıklılık.",
+          duration: "40-60 dk",
+          from: "₺400",
+          prices: [
+            { label: "Tek renk", value: "₺400" },
+            { label: "French", value: "₺460" },
+            { label: "Güçlendirme", value: "₺520" }
+          ]
+        },
+        {
+          id: "ritual-care",
+          category: "care",
+          title: "Bakım Ritüelleri",
+          description: "El-ayak-cilt odaklı yenileyici bakım paketleri.",
+          duration: "60-90 dk",
+          from: "₺550",
+          prices: [
+            { label: "El bakım ritüeli", value: "₺550" },
+            { label: "Ayak bakım ritüeli", value: "₺600" },
+            { label: "Kombine bakım", value: "₺980" }
+          ]
+        }
+      ];
+
+      const INSTAGRAM_POST_LINKS = [
+        "https://www.instagram.com/betulbockunbeauty/p/CzgKOe8IRrl/",
+        "https://www.instagram.com/betulbockunbeauty/p/CzTSAQbI97h/",
+        "https://www.instagram.com/betulbockunbeauty/p/CzQ0_1UIh7i/",
+        "https://www.instagram.com/betulbockunbeauty/p/CzOchuRIfxh/",
+        "https://www.instagram.com/betulbockunbeauty/reel/CzLfg7Dozsh/",
+        "https://www.instagram.com/betulbockunbeauty/p/CzErtqdoIEb/",
+        "https://www.instagram.com/betulbockunbeauty/p/CyLB4lyIFI0/",
+        "https://www.instagram.com/betulbockunbeauty/p/Cxi-dmCA__E/",
+        "https://www.instagram.com/betulbockunbeauty/p/Cxi2MMnAz68/",
+        "https://www.instagram.com/betulbockunbeauty/p/Cxh4O8CNjRw/",
+        "https://www.instagram.com/betulbockunbeauty/p/Cxf0L8Ros-5/",
+        "https://www.instagram.com/betulbockunbeauty/p/CxfuHqVoU9J/"
+      ];
+
+      function isConfiguredUrl(value) {
+        return (
+          typeof value === "string" &&
+          value.trim().length > 0 &&
+          /^https?:\/\//.test(value) &&
+          !value.includes("REPLACE_WITH")
+        );
+      }
+
+      function markLinkDisabled(el) {
+        el.classList.add("is-disabled");
+        el.setAttribute("aria-disabled", "true");
+        el.setAttribute("href", "#");
+      }
+
+      function applyConfigLinks() {
+        document.querySelectorAll("[data-config-link]").forEach((el) => {
+          const key = el.getAttribute("data-config-link");
+          if (!key) return;
+          const value = SITE_CONFIG[key];
+          if (isConfiguredUrl(value)) {
+            el.setAttribute("href", value);
+            el.classList.remove("is-disabled");
+            el.removeAttribute("aria-disabled");
+            return;
+          }
+          markLinkDisabled(el);
+        });
+      }
+
+      function extractCalLinkPath(url) {
+        if (!isConfiguredUrl(url)) return "";
+        try {
+          const parsed = new URL(url);
+          return parsed.pathname.replace(/^\/+/, "");
+        } catch (_error) {
+          return "";
+        }
+      }
+
+      function initCalInlineEmbed() {
+        const mount = document.getElementById("my-cal-inline-betul-bockun");
+        if (!mount) return;
+
+        const calLink = SITE_CONFIG.calLinkPath || extractCalLinkPath(SITE_CONFIG.calBookingUrl);
+        if (!calLink) return;
+
+        const namespace = "betul-bockun";
+        const origin = "https://app.cal.com";
+
+        const startEmbed = () => {
+          if (typeof window.Cal !== "function") return;
+          window.Cal("init", namespace, { origin });
+          window.Cal.ns[namespace]("inline", {
+            elementOrSelector: "#my-cal-inline-betul-bockun",
+            config: { layout: "month_view", useSlotsViewOnSmallScreen: true },
+            calLink
+          });
+          window.Cal.ns[namespace]("ui", {
+            cssVarsPerTheme: {
+              light: { "cal-brand": "#c79a4a" },
+              dark: { "cal-brand": "#f2d7a2" }
+            },
+            hideEventTypeDetails: false,
+            layout: "month_view"
+          });
+        };
+
+        if (window.Cal && typeof window.Cal === "function") {
+          startEmbed();
+          return;
+        }
+
+        const existing = document.querySelector('script[data-cal-embed="true"]');
+        if (existing) {
+          existing.addEventListener("load", startEmbed, { once: true });
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = "https://app.cal.com/embed/embed.js";
+        script.async = true;
+        script.dataset.calEmbed = "true";
+        script.onload = startEmbed;
+        document.head.appendChild(script);
+      }
+
+      function renderServiceFilters(active = "all") {
+        const filterRoot = document.getElementById("serviceFilters");
+        if (!filterRoot) return;
+
+        filterRoot.innerHTML = "";
+        SERVICE_CATEGORIES.forEach((category) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = `chip ${category.id === active ? "active" : ""}`;
+          btn.textContent = category.label;
+          btn.setAttribute("data-category", category.id);
+          btn.addEventListener("click", () => {
+            renderServiceFilters(category.id);
+            renderServices(category.id);
+          });
+          filterRoot.appendChild(btn);
+        });
+      }
+
+      function renderServices(category = "all") {
+        const grid = document.getElementById("servicesGrid");
+        if (!grid) return;
+
+        const filtered =
+          category === "all"
+            ? SERVICE_DATA
+            : SERVICE_DATA.filter((service) => service.category === category);
+
+        grid.innerHTML = "";
+        filtered.forEach((service) => {
+          const card = document.createElement("article");
+          card.className = "panel service-card reveal is-visible";
+          card.innerHTML = `
+            <h3>${service.title}</h3>
+            <p>${service.description}</p>
+            <div class="service-meta">Süre: ${service.duration} · Başlangıç: <strong>${service.from}</strong></div>
+            <ul class="price-list">
+              ${service.prices
+                .map(
+                  (row) =>
+                    `<li class="price-row"><span>${row.label}</span><strong>${row.value}</strong></li>`
+                )
+                .join("")}
+            </ul>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      function initInstagramWidget() {
+        const wrap = document.getElementById("instagramWrap");
+        const hint = document.getElementById("instagramHint");
+        if (!wrap) return;
+
+        if (isConfiguredUrl(SITE_CONFIG.instagramWidgetUrl)) {
+          wrap.innerHTML = `
+            <iframe
+              class="instagram-frame"
+              title="Instagram canlı akış"
+              src="${SITE_CONFIG.instagramWidgetUrl}"
+              loading="lazy">
+            </iframe>
+          `;
+          if (hint) {
+            hint.textContent = "Canlı Instagram widget bağlantısı aktif.";
+          }
+          return;
+        }
+
+        const fallback = document.getElementById("instagramFallback");
+        if (!fallback) return;
+
+        fallback.innerHTML = "";
+        INSTAGRAM_POST_LINKS.forEach((url, index) => {
+          const card = document.createElement("article");
+          card.className = "instagram-post";
+          card.innerHTML = `
+            <blockquote
+              class="instagram-media"
+              data-instgrm-permalink="${url}"
+              data-instgrm-version="14"
+              data-instgrm-captioned="false"
+              aria-label="Instagram paylaşımı ${index + 1}">
+            </blockquote>
+          `;
+          fallback.appendChild(card);
+        });
+
+        const processEmbeds = () => {
+          if (window.instgrm && window.instgrm.Embeds && typeof window.instgrm.Embeds.process === "function") {
+            window.instgrm.Embeds.process();
+          }
+        };
+
+        const existingScript = document.querySelector('script[data-instagram-embed="true"]');
+        if (existingScript) {
+          if (window.instgrm && window.instgrm.Embeds) {
+            processEmbeds();
+          } else {
+            existingScript.addEventListener("load", processEmbeds, { once: true });
+          }
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = "https://www.instagram.com/embed.js";
+        script.async = true;
+        script.dataset.instagramEmbed = "true";
+        script.onload = processEmbeds;
+        document.head.appendChild(script);
+
+        if (hint) {
+          hint.textContent = "Instagram gönderileri canlı embed olarak görüntüleniyor.";
+        }
+      }
+
+      function initForms() {
+        const contactForm = document.getElementById("contactForm");
+        const reviewForm = document.getElementById("reviewIntakeForm");
+        const contactNote = document.getElementById("contactFormNote");
+        const reviewNote = document.getElementById("reviewFormNote");
+
+        const hasFormEndpoint = isConfiguredUrl(SITE_CONFIG.formEndpoint);
+
+        [contactForm, reviewForm].forEach((form) => {
+          if (!form) return;
+
+          if (hasFormEndpoint) {
+            form.action = SITE_CONFIG.formEndpoint;
+            form.method = "POST";
+          } else {
+            form.addEventListener("submit", (event) => {
+              event.preventDefault();
+            });
+          }
+        });
+
+        if (contactNote) {
+          contactNote.textContent = hasFormEndpoint
+            ? "Form aktif. Mesajlar Formspree paneline düşer."
+            : "Form demo modunda. Formspree ID eklenmeden mesajlar gönderilmez.";
+          contactNote.classList.toggle("warn", !hasFormEndpoint);
+        }
+
+        if (reviewNote) {
+          reviewNote.textContent = hasFormEndpoint
+            ? "Yorum formu aktif. Gönderimleri panelden onaylayabilirsiniz."
+            : "Yorum formu demo modunda. Formspree ID eklenmeden gönderim yapılmaz.";
+          reviewNote.classList.toggle("warn", !hasFormEndpoint);
+        }
+      }
+
+      function initNav() {
+        const page = document.querySelector(".page");
+        const toggle = document.getElementById("navToggle");
+        const links = document.querySelectorAll(".nav-links a");
+
+        if (!page || !toggle) return;
+
+        const close = () => {
+          page.classList.remove("nav-open");
+          toggle.setAttribute("aria-expanded", "false");
+        };
+
+        const open = () => {
+          page.classList.add("nav-open");
+          toggle.setAttribute("aria-expanded", "true");
+        };
+
+        toggle.addEventListener("click", () => {
+          const isOpen = page.classList.contains("nav-open");
+          if (isOpen) {
+            close();
+          } else {
+            open();
+          }
+        });
+
+        links.forEach((link) => link.addEventListener("click", close));
+
+        document.addEventListener("click", (event) => {
+          if (!page.classList.contains("nav-open")) return;
+          const nav = document.querySelector(".site-header");
+          if (!nav) return;
+          if (!nav.contains(event.target)) {
+            close();
+          }
+        });
+      }
+
+      function initReveal() {
+        const reveals = document.querySelectorAll(".reveal");
+        if (!("IntersectionObserver" in window)) {
+          reveals.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.18 }
+        );
+
+        reveals.forEach((el) => observer.observe(el));
+      }
+
+      function initImageLoading() {
+        document.querySelectorAll("img").forEach((img) => {
+          if (img.complete) {
+            img.classList.add("is-loaded");
+            return;
+          }
+          img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
+        });
+      }
+
+      function initAnalytics() {
+        const id = SITE_CONFIG.analyticsId;
+        if (!id || !/^G-[A-Z0-9]+$/.test(id)) {
+          return;
+        }
+
+        const src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = src;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+        window.gtag = gtag;
+        gtag("js", new Date());
+        gtag("config", id);
+      }
+
+      function initFooterYear() {
+        const year = document.getElementById("year");
+        if (year) {
+          year.textContent = String(new Date().getFullYear());
+        }
+      }
+
+      applyConfigLinks();
+      initCalInlineEmbed();
+      renderServiceFilters("all");
+      renderServices("all");
+      initInstagramWidget();
+      initForms();
+      initNav();
+      initReveal();
+      initImageLoading();
+      initAnalytics();
+      initFooterYear();
+    </script>
   </body>
 </html>
