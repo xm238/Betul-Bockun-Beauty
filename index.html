@@ -765,14 +765,21 @@
         border: 1px solid rgba(199, 154, 74, 0.2);
         background: #fff;
         padding: 0;
+        display: grid;
+        gap: 0;
       }
 
-      .instagram-post iframe {
-        width: 100%;
-        min-height: 480px;
-        border: 0;
+      .instagram-media-link {
         display: block;
-        background: #fff;
+        background: #f8eef3;
+        aspect-ratio: 4 / 5;
+      }
+
+      .instagram-thumb {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
       }
 
       .instagram-open {
@@ -781,6 +788,7 @@
         font-size: 13px;
         font-weight: 700;
         color: var(--plum);
+        border-top: 1px solid rgba(199, 154, 74, 0.2);
         padding: 10px 8px 12px;
       }
 
@@ -1039,9 +1047,12 @@
         .news-grid,
         .split-grid,
         .contact-grid,
-        .booking-grid,
-        .instagram-fallback {
+        .booking-grid {
           grid-template-columns: 1fr;
+        }
+
+        .instagram-fallback {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .field.full {
@@ -1199,8 +1210,8 @@
           min-height: 600px;
         }
 
-        .instagram-post iframe {
-          min-height: 440px;
+        .instagram-media-link {
+          aspect-ratio: 1 / 1;
         }
       }
 
@@ -1226,6 +1237,10 @@
 
         .lang-btn {
           padding: 6px 6px;
+        }
+
+        .instagram-fallback {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -1905,6 +1920,20 @@
         "https://www.instagram.com/betulbockunbeauty/p/CxfuHqVoU9J/"
       ];
 
+      const INSTAGRAM_LOCAL_IMAGES = [
+        "instagram/instagram-01.png",
+        "instagram/instagram-02.png",
+        "instagram/instagram-03.png",
+        "instagram/instagram-04.png",
+        "instagram/instagram-05.png",
+        "instagram/instagram-06.png",
+        "instagram/instagram-07.png",
+        "instagram/instagram-08.png",
+        "instagram/instagram-09.png",
+        "instagram/instagram-10.png",
+        "instagram/instagram-11.png"
+      ];
+
       const LANGUAGE_PACKS = {
         en: {
           skip_link: "Skip to content",
@@ -2139,7 +2168,8 @@
           review_note_inactive: "Yorum formu şu anda aktif değil.",
           instagram_feed_active: "Instagram akışı aktif.",
           instagram_feed_hint: "Son paylaşımlarımızı doğrudan Instagram'dan görüntüleyebilirsiniz.",
-          instagram_open: "Instagram'da Aç"
+          instagram_open: "Instagram'da Aç",
+          instagram_image_alt: "Instagram çalışması"
         },
         en: {
           service_duration: "Duration",
@@ -2148,7 +2178,8 @@
           review_note_inactive: "The review form is currently unavailable.",
           instagram_feed_active: "Instagram feed is active.",
           instagram_feed_hint: "You can view our latest posts directly from Instagram.",
-          instagram_open: "Open on Instagram"
+          instagram_open: "Open on Instagram",
+          instagram_image_alt: "Instagram post"
         },
         ar: {
           service_duration: "المدة",
@@ -2157,7 +2188,8 @@
           review_note_inactive: "نموذج التقييم غير متاح حاليًا.",
           instagram_feed_active: "خلاصة Instagram مفعلة.",
           instagram_feed_hint: "يمكنك مشاهدة أحدث منشوراتنا مباشرة من Instagram.",
-          instagram_open: "افتح في Instagram"
+          instagram_open: "افتح في Instagram",
+          instagram_image_alt: "منشور Instagram"
         }
       };
 
@@ -2407,33 +2439,22 @@
         const fallback = document.getElementById("instagramFallback");
         if (!fallback) return;
 
-        const toEmbedUrl = (url) => {
-          if (!isConfiguredUrl(url)) return "";
-          try {
-            const parsed = new URL(url);
-            const match = parsed.pathname.match(/\/(p|reel)\/([^/]+)/);
-            if (!match) return "";
-            const type = match[1];
-            const id = match[2];
-            return `https://www.instagram.com/${type}/${id}/embed`;
-          } catch (_error) {
-            return "";
-          }
-        };
-
         fallback.innerHTML = "";
-        INSTAGRAM_POST_LINKS.forEach((url, index) => {
-          const embedUrl = toEmbedUrl(url);
-          if (!embedUrl) return;
+        INSTAGRAM_LOCAL_IMAGES.forEach((imageSrc, index) => {
+          const url = isConfiguredUrl(INSTAGRAM_POST_LINKS[index])
+            ? INSTAGRAM_POST_LINKS[index]
+            : SITE_CONFIG.instagramProfileUrl;
           const card = document.createElement("article");
           card.className = "instagram-post";
           card.innerHTML = `
-            <iframe
-              title="Instagram paylaşımı ${index + 1}"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              src="${embedUrl}">
-            </iframe>
+            <a class="instagram-media-link" href="${url}" target="_blank" rel="noreferrer">
+              <img
+                class="instagram-thumb"
+                src="${imageSrc}"
+                alt="${getLanguageString("instagram_image_alt")} ${index + 1}"
+                loading="lazy"
+                decoding="async" />
+            </a>
             <a class="instagram-open" href="${url}" target="_blank" rel="noreferrer">${getLanguageString("instagram_open")}</a>
           `;
           fallback.appendChild(card);
