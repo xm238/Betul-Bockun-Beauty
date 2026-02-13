@@ -382,6 +382,7 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
+        grid-column: span 7;
       }
 
       .hero-trust li {
@@ -401,6 +402,7 @@
 
       .hero-media {
         grid-column: span 5;
+        grid-row: 1 / span 2;
       }
 
       .hero-card {
@@ -925,11 +927,17 @@
         }
 
         .hero-copy,
-        .hero-media {
+        .hero-media,
+        .hero-trust {
           grid-column: span 1;
         }
 
         .hero-media {
+          order: 3;
+          grid-row: auto;
+        }
+
+        .hero-trust {
           order: 2;
         }
 
@@ -1092,24 +1100,75 @@
 
         .hero {
           padding: 28px 16px 42px;
+          grid-template-columns: minmax(0, 1fr) minmax(118px, 34%);
+          gap: 12px;
         }
 
         .hero-copy h1 {
           font-size: clamp(34px, 13vw, 46px);
         }
 
-        .hero-actions {
-          display: grid;
-          grid-template-columns: 1fr;
+        .hero-copy {
+          grid-column: 1 / -1;
         }
 
-        .hero-actions .cta {
-          width: 100%;
+        #overview .hero-actions {
+          display: none;
+        }
+
+        .hero-trust {
+          grid-column: 1;
+          margin-top: 8px;
+          gap: 8px;
+        }
+
+        .hero-trust li {
+          padding: 10px 11px;
+          font-size: 13px;
+          max-width: 230px;
+        }
+
+        .hero-media {
+          grid-column: 2;
+          grid-row: 2;
+          align-self: start;
+          order: 2;
+        }
+
+        .hero-card {
+          border-radius: 16px;
+          min-height: 0;
         }
 
         .hero-card,
         .hero-card img {
-          min-height: 300px;
+          min-height: 0;
+        }
+
+        .hero-card img {
+          aspect-ratio: 3 / 4;
+          height: auto;
+        }
+
+        .hero-tag {
+          display: none;
+        }
+
+        .media-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-auto-rows: auto;
+          gap: 10px;
+        }
+
+        .media-item {
+          grid-column: span 1 !important;
+          grid-row: span 1 !important;
+          aspect-ratio: 4 / 5;
+          border-radius: 16px;
+        }
+
+        .media-item img {
+          height: 100%;
         }
 
         .booking-info,
@@ -1143,6 +1202,19 @@
       }
 
       @media (max-width: 380px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-trust,
+        .hero-media {
+          grid-column: 1;
+        }
+
+        .hero-media {
+          grid-row: auto;
+        }
+
         .brand-name {
           display: none;
         }
@@ -1250,22 +1322,22 @@
               <a class="cta ghost" href="tel:+905521548052" data-i18n="hero_cta_call">Telefonla Ara</a>
               <a class="cta ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Bet%C3%BCl%20B%C3%B6%C3%A7k%C3%BCn%20Beauty%20Beylikd%C3%BCz%C3%BC" target="_blank" rel="noreferrer" data-i18n="hero_cta_map">Yol Tarifi</a>
             </div>
-
-            <ul class="hero-trust" aria-label="Öne çıkan bilgiler">
-              <li>
-                <strong>4.1 ★</strong>
-                <span data-i18n="hero_stat_reviews">40+ Google yorumu</span>
-              </li>
-              <li>
-                <strong data-i18n="hero_stat_open">Her Gün Açık</strong>
-                10:00 - 20:00
-              </li>
-              <li>
-                <strong>Erçev Sitesi</strong>
-                Eğitim Vadisi Blv. No:3
-              </li>
-            </ul>
           </div>
+
+          <ul class="hero-trust" aria-label="Öne çıkan bilgiler">
+            <li>
+              <strong>4.1 ★</strong>
+              <span data-i18n="hero_stat_reviews">40+ Google yorumu</span>
+            </li>
+            <li>
+              <strong data-i18n="hero_stat_open">Her Gün Açık</strong>
+              10:00 - 20:00
+            </li>
+            <li>
+              <strong>Erçev Sitesi</strong>
+              Eğitim Vadisi Blv. No:3
+            </li>
+          </ul>
 
           <div class="hero-media reveal">
             <figure class="hero-card">
